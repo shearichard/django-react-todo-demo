@@ -135,7 +135,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+##########################################################################
 # We whitelist localhost:3000 because that's where frontend will be served
+#
+# NB: the value used here is different from the one shown in the original
+#     blog post as the original value generated an error when used. Two 
+#     things were change, a scheme ('http') was added to the url and the 
+#     trailing slash shown in the blog post was removed
+#
+##########################################################################
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
+    'http://localhost:3000',
 )
