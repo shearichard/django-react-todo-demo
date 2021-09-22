@@ -1,6 +1,7 @@
 // frontend/src/App.js
 import React, { Component } from "react";
 import Modal from "./components/Modal";
+import TodoTabs from "./components/TodoTabs";
 import PageTop from "./components/PageTop";
 import axios from "axios";
 
@@ -50,7 +51,7 @@ class App extends Component {
 	  </div>
 	);
   };
-  renderItems = () => {
+  renderItems = (showDescription) => {
 	const { viewCompleted } = this.state;
 	const newItems = this.state.todoList.filter(
 	  item => item.completed === viewCompleted
@@ -125,9 +126,10 @@ class App extends Component {
 				  Add task
 				</button>
 			  </div>
-			  {this.renderTabList()}
+              <br/>
+              <TodoTabs showDescription={false} displayCompleted={this.displayCompleted} />
 			  <ul className="list-group list-group-flush">
-				{this.renderItems()}
+				{this.renderItems(false)}
 			  </ul>
 			</div>
 		  </div>
