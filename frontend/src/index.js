@@ -2,7 +2,8 @@
 //
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';       // add this
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './theme.min.css' //This is the Fresca theme from https://bootstrap.themes.guide/fresca/
 import './index.css';
 import App from './App';
 //import * as serviceWorker from './serviceWorker';
