@@ -1,6 +1,10 @@
 // frontend/src/App.js
 import React, { Component } from "react";
 import Modal from "./components/Modal";
+import DjangoLogo from "./components/DjangoLogo";
+import ReactLogo from "./components/ReactLogo";
+import InfoCircle from "./components/InfoCircle";
+import Github from "./components/Github";
 import axios from "axios";
 
 class App extends Component {
@@ -113,9 +117,40 @@ class App extends Component {
 	this.setState({ activeItem: item, modal: !this.state.modal });
   };
   render() {
+    const tableStyle = {
+        align: "center",
+        margin: "auto",
+        width: "50%",
+    }
+    const floatRight = {
+        float: "right",
+        margin: "auto",
+    }
+    const tweakHeader = {
+        display:"inherit",
+    }
 	return (
-	  <main className="content">
-		<h1 className="text-white text-uppercase text-center my-4">Todo app</h1>
+	  <main className="content bgdefined">
+        <table style={tableStyle}>
+            <tr>
+                <td>
+                    <ReactLogo height="5em" width="5em"  />
+                    &nbsp;
+                    <DjangoLogo height="8em" width="5em"  />
+                </td>
+                <td>
+                    <span style={floatRight}><InfoCircle height="2em" width="2em" /></span>
+                    &nbsp;
+                    <span style={floatRight}><Github height="2em" width="2em" /></span>
+                </td>
+            </tr>
+            <tr>
+                <td colSpan={2}>
+                    <h2 className="text-grey text-uppercase text-center my-4" style={tweakHeader}>React/Django Demonstrator</h2>
+                    <h3 className="text-grey text-uppercase text-left my-4">Todos</h3>
+                </td>
+            </tr>
+        </table>
 		<div className="row ">
 		  <div className="col-md-6 col-sm-10 mx-auto p-0">
 			<div className="card p-3">
