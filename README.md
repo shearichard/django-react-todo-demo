@@ -1,8 +1,8 @@
-# Using React with Django
+# Demonstrating how to use React with Django
 
-Building a Django app which uses React on the front end.
+This project for use in workshops etc to demonstrate an 'end-to-end' experience of using React on the front end and Django on the backend.
 
-Based on the steps provided [here](https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react).
+
 
 ## Development Notes
 
