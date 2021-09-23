@@ -115,8 +115,11 @@ class App extends Component {
 	this.setState({ activeItem: item, modal: !this.state.modal });
   };
   render() {
+    const forceFullHeight = {
+        height: "100vh",
+    }
 	return (
-	  <main className="content bgdefined">
+	  <main className="content bg-info" style={forceFullHeight}>
         <PageTop />
 		<div className="row ">
 		  <div className="col-md-6 col-sm-10 mx-auto p-0">

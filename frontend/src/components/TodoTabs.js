@@ -8,9 +8,6 @@ const TodoTabs = (props) => {
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
   }
-  const cursorOverSpan= {
-    cursor:"default",
-  }
   return (
     <div>
       <Nav tabs>
@@ -19,7 +16,7 @@ const TodoTabs = (props) => {
             className={classnames({ active: activeTab === '1' })}
             onClick={() => { props.displayCompleted(false); toggle('1'); }}
           >
-            <span style={cursorOverSpan}>Incomplete Todos</span>
+            <a class="nav-link" href="#1" data-toggle="tab">Incomplete Todos</a>
           </NavLink>
         </NavItem>
         <NavItem>
@@ -27,7 +24,7 @@ const TodoTabs = (props) => {
             className={classnames({ active: activeTab === '2' })}
             onClick={() => { props.displayCompleted(true); toggle('2'); }}
           >
-            <span style={cursorOverSpan}>Completed Todos</span>
+            <a class="nav-link" href="#2" data-toggle="tab">Completed Todos</a>
           </NavLink>
         </NavItem>
       </Nav>
