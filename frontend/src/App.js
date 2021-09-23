@@ -115,9 +115,13 @@ class App extends Component {
 	this.setState({ activeItem: item, modal: !this.state.modal });
   };
   render() {
+    //Using 'forceFullHeight' as an inline style is a bit unfortunate
+    //but I experienced signficant difficulty achieveng the same effect
+    //by other means.
     const forceFullHeight = {
         height: "100vh",
     }
+    //
 	return (
 	  <main className="content bg-info" style={forceFullHeight}>
         <PageTop />
