@@ -2,6 +2,9 @@
 
 This project for use in workshops etc to demonstrate an 'end-to-end' experience of using React on the front end and Django on the backend.
 
+![image](https://user-images.githubusercontent.com/403435/134493433-793c42e3-eca2-4f9c-a3b7-e2151ec7b9f6.png)
+
+
 
 
 ## Development Notes
