@@ -4,15 +4,16 @@ import React, { Component } from "react";
 import DjangoLogo from "./DjangoLogo";
 import ReactLogo from "./ReactLogo";
 import InfoCircle from "./InfoCircle";
+import SpacerImage from "./SpacerImage";
 import Github from "./Github";
 import { UncontrolledAlert } from "reactstrap";
 
 export default class PageTop extends Component {
   constructor(props) {
-	super(props);
-	this.state = {
-	  showInfo: false 
-	};
+    super(props);
+    this.state = {
+      showInfo: false 
+    };
   }
   showInfo(){
       alert("showing info")
@@ -31,10 +32,9 @@ export default class PageTop extends Component {
         display:"inherit",
     }
     const infoRowController = {
-
     }
-	//const { toggle, onSave } = this.props;
-	return (
+    //const { toggle, onSave } = this.props;
+    return (
         <>
             <table style={tableStyle}>
                 <tbody>
@@ -45,14 +45,20 @@ export default class PageTop extends Component {
                             <DjangoLogo height="8em" width="5em"  />
                         </td>
                         <td>
-                            <span onClick={this.showInfo} style={floatRight}><InfoCircle height="2em" width="2em" /></span>
-                            &nbsp;
-                            <a href="https://github.com/shearichard/django-react-todo-demo" target="_blank" rel="noreferrer"><span style={floatRight}><Github height="2em" width="2em" /></span></a>
+                            <a href="https://github.com/shearichard/django-react-todo-demo" target="_blank" rel="noreferrer">
+                                <span style={floatRight}><Github height="2em" width="2em" /></span>
+                            </a>
+                            <span onClick={this.showInfo} style={floatRight}>
+                                <SpacerImage height="2em" width="0.5em" />
+                            </span>
+                            <span onClick={this.showInfo} style={floatRight}>
+                                <InfoCircle height="2em" width="2em" />
+                            </span>
                         </td>
                     </tr>
                     <tr style={infoRowController}>
                         <td colSpan={2}>
-                            <UncontrolledAlert color="info" fade={false}>
+                            <UncontrolledAlert color="info" fade={false} isOpen={false}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             </UncontrolledAlert>
                         </td>
@@ -66,6 +72,6 @@ export default class PageTop extends Component {
                 </tbody>
             </table>
         </>
-	);
+    );
   }
 }
