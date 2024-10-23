@@ -104,7 +104,7 @@ class App extends Component {
   };
   handleDelete = item => {
 	axios
-	  .delete(`http://localhost:8000/api/todos/${item.id}`)
+	  .delete(`http://localhost:8000/api/todos/${item.id}/`)
 	  .then(res => this.refreshList());
   };
   createItem = () => {
