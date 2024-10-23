@@ -39,7 +39,8 @@ SECRET_KEY = get_env_variable('TODO_SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-        '0.0.0.0'
+        '0.0.0.0',
+        'localhost'
         ]
 
 
