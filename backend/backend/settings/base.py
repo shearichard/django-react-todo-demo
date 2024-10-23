@@ -38,7 +38,9 @@ SECRET_KEY = get_env_variable('TODO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        '0.0.0.0'
+        ]
 
 
 # Application definition
@@ -147,3 +149,9 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
 )
+#
+# Put a Primary Key on every model that doesn't 
+# otherwise define one.
+#
+# DEFAULT_AUTO_FIELD = True
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
