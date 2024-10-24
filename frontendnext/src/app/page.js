@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 // app/page.js
-
+export const metadata = {
+	title: 'Next/Django Demo - Index',
+};
 export default function Home() {
     return (
         <div className="d-flex flex-column min-vh-100">
