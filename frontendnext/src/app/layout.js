@@ -1,9 +1,7 @@
 // app/layout.js
-
-// Import Bootstrap CSS
-//import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
+//
 import BootStrapClient from './components/BootStrapClient.js';
 
 export default function RootLayout({ children }) {
@@ -11,7 +9,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <head>
                 <link
-                    href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/sandstone/bootstrap.min.css"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/simplex/bootstrap.min.css"
                     rel="stylesheet"
                 />
             </head>
