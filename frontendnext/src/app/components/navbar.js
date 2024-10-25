@@ -3,7 +3,7 @@ export default function Navbar() {
 	    return (
 		            <nav className="navbar bg-primary" data-bs-theme="dark">
 		                <div className="container">
-		                    <a className="navbar-brand" href="#">Next/Django Demo</a>
+		                    <a className="navbar-brand" href="/">Next/Django Demo</a>
 		                    <ul className="navbar-nav ms-auto d-flex flex-row">
 		                        <li className="nav-item me-3">
 		                            <a className="nav-link" href="/">Home</a>
