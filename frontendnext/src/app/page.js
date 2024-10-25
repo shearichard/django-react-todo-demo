@@ -15,7 +15,7 @@ export default function Home() {
             {/* Main Content */}
             <div className="container mt-5 flex-grow-1">
                 <div className="jumbotron">
-                    <h1 className="display-4">Welcome to the Next/Django Demo App</h1>
+                    <h1 className="display-4">Welcome to the Next/Django Demo App A</h1>
                     <p className="lead">
                         This is a simple 'todo' app to demonstrate how Next and Django can work together. 
                     </p>
