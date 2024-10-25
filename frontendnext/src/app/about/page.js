@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 // app/page.js
 export const metadata = {
     title: 'Next/Django Demo - Home',
