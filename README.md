@@ -4,14 +4,7 @@ This project for use in workshops etc to demonstrate an 'end-to-end' experience 
 
 To demonstrate the project in use it's necessary to start both a Django instance and to use the react development server. Notes on how to do this are below.
 
-
-![image](https://user-images.githubusercontent.com/403435/134493433-793c42e3-eca2-4f9c-a3b7-e2151ec7b9f6.png)
-
-
-
-
-
-
+![Screenshot of nextjs frontend.](doco_assets/README.md-assets/nextjs-home-splash.png)
 
 ## Development Notes
 
