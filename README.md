@@ -1,8 +1,8 @@
-# Demonstrating how to use React with Django
+# Using Next.js or React with Django
 
-This project for use in workshops etc to demonstrate an 'end-to-end' experience of using React on the front end and Django on the backend.
+This project for use in workshops etc to demonstrate an 'end-to-end' experience of using React, or Nextjs, on the front end (there are two difference front ends) and Django on the backend.
 
-To demonstrate the project in use it's necessary to start both a Django instance and to use the react development server. Notes on how to do this are below.
+To demonstrate the project in use it's necessary to start both a Django instance and to use the react, or the next.js, development server. Notes on how to do this are below.
 
 ![Screenshot of nextjs frontend.](doco_assets/README.md-assets/nextjs-home-splash.png)
 
