@@ -1,2 +1,2 @@
-#settings/local.py
+# settings/local.py
 from .base import *

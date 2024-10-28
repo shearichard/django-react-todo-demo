@@ -14,15 +14,18 @@ from pathlib import Path
 import os
 from django.core.exceptions import ImproperlyConfigured
 
-###################################################################################    
+
+###################################################################################
 def get_env_variable(var_name):
-    '''Get the env var value or throw an exception'''
+    """Get the env var value or throw an exception"""
     try:
         return os.environ[var_name]
     except KeyError:
         error_msg = "Set the %s environment variable" % var_name
         raise ImproperlyConfigured(error_msg)
-###################################################################################    
+
+
+###################################################################################
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,70 +35,67 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('TODO_SECRET_KEY')
+SECRET_KEY = get_env_variable("TODO_SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-        '0.0.0.0',
-        'localhost'
-        ]
+ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
 
 
 # Application definition
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'corsheaders',
-    'rest_framework',
-    'todo',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "corsheaders",
+    "rest_framework",
+    "todo",
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'backend.urls'
+ROOT_URLCONF = "backend.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
+WSGI_APPLICATION = "backend.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -105,16 +105,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -122,9 +122,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -136,23 +136,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 ##########################################################################
 # We whitelist localhost:3000 because that's where frontend will be served
 #
 # NB: the value used here is different from the one shown in the original
-#     blog post as the original value generated an error when used. Two 
-#     things were change, a scheme ('http') was added to the url and the 
+#     blog post as the original value generated an error when used. Two
+#     things were change, a scheme ('http') was added to the url and the
 #     trailing slash shown in the blog post was removed
 #
 ##########################################################################
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-)
+CORS_ORIGIN_WHITELIST = ("http://localhost:3000",)
 #
-# Put a Primary Key on every model that doesn't 
+# Put a Primary Key on every model that doesn't
 # otherwise define one.
 #
 # DEFAULT_AUTO_FIELD = True
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

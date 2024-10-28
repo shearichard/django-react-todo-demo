@@ -1,3 +1,2 @@
-#settings/test.py
+# settings/test.py
 from .base import *
-
