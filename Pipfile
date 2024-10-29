@@ -10,6 +10,7 @@ django-cors-headers = "*"
 inflection = "*"
 uritemplate = "*"
 pyyaml = "*"
+django-extensions = "*"
 
 [requires]
 python_version = "3.10"
