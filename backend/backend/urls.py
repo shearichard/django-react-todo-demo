@@ -25,6 +25,13 @@ from todo import views
 router = routers.DefaultRouter()
 router.register(r'todos', views.TodoView, 'todo')
 
-urlpatterns = [
-    path('admin/', admin.site.urls), path('api/', include(router.urls))
+VERSION_NUMBER = 1
+
+urladmin_patterns = [
+    path('admin/', admin.site.urls)
 ]
+#
+urlapiv1_patterns = [
+    path(f'api/v{VERSION_NUMBER}/', include(router.urls))
+]
+urlpatterns = urladmin_patterns + urlapiv1_patterns
