@@ -13,6 +13,12 @@ Here's an example of running the a local Django instance.
 ```
 python manage.py runserver 0.0.0.0:8000 --settings=backend.settings.local
 ```
+### What URLs are available
+The [Django Extensions package](https://django-extensions.readthedocs.io/en/latest/index.html) is installed as a dev tool and so available urls may be seen as follows 
+
+```
+python manage.py show_urls --settings backend.settings.local
+```
 
 ### Environmentally Aware Settings
 
