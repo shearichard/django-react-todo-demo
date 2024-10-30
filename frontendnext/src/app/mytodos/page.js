@@ -19,7 +19,6 @@ const Home = () => {
     fetchTodos(); 
   }, []);
 
-  //const handleAddTodo = () => {
   const handleAddTodo = async () => {
     if (newTask.trim() && newDate.trim()) {
       const newItem = { title: newTask, should_be_completed_by_date: newDate, description: "Hardcoded temporary value" };
@@ -51,21 +50,6 @@ const Home = () => {
     const fetchedTodo = await fetchTodo(id);
     setTodo(fetchedTodo);
   };
-
-  const myList = [{ id: 1 }, { id: 2 }, { id: 3 }];
-
-/*
-  return (
-    <div>
-      <h2>Todos</h2>
-      <ul>
-        {data.map(item => (
-          <li key={item.id}>{item.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
-*/
 
   return (
     <>
@@ -125,127 +109,6 @@ const Home = () => {
       )}
     </>
   );
-
-
-
-
-
-
-	/*
-  return (
-    <div>
-      <h2>Data List</h2>
-      {(data.length) > 0 ? (
-          {data.map((item) => (
-		  <p>X</p>
-	  )
-      ) : (
-        <p>No data available.</p>
-      )}}
-
-      <h3>Add New Item</h3>
-      <input
-        type="text"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-        placeholder="Enter task"
-      />
-      <input
-        type="date"
-        value={newDate}
-        onChange={(e) => setNewDate(e.target.value)}
-        placeholder="Enter date"
-      />
-      <button onClick={handleAddTodo}>Add Item</button>
-
-      <h3>Update Item</h3>
-      <input
-        type="text"
-        value={updateId}
-        onChange={(e) => setUpdateId(e.target.value)}
-        placeholder="Enter ID"
-      />
-      <input
-        type="text"
-        value={updateTask}
-        onChange={(e) => setUpdateTask(e.target.value)}
-        placeholder="Enter new task"
-      />
-      <button onClick={handleUpdateTodo}>Update Item</button>
-
-      <h3>Fetch Single Item</h3>
-      <input
-        type="text"
-        placeholder="Enter ID to fetch"
-        onBlur={(e) => handleFetchTodo(e.target.value)}
-      />
-      {todo && (
-        <p>
-          Fetched Todo: {todo.title} - {todo.should_be_completed_by_date}
-        </p>
-      )}
-    </div>
-	/*/
-	 /*
-  return (
-    <div>
-      <h2>Data List</h2>
-      {data.length > 0 ? (
-        <ul>
-          {data.map((item) => (
-            <li key={item.id}>
-              {item.title} - {item.id}
-              <button onClick={() => handleDeleteTodo(item.id)}>Delete</button>
-            </li>
-            ))}
-        </ul>
-      ) : (
-        <p>No data available.</p>
-      )}
-
-      <h3>Add New Item</h3>
-      <input
-        type="text"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-        placeholder="Enter task"
-      />
-      <input
-        type="date"
-        value={newDate}
-        onChange={(e) => setNewDate(e.target.value)}
-        placeholder="Enter date"
-      />
-      <button onClick={handleAddTodo}>Add Item</button>
-
-      <h3>Update Item</h3>
-      <input
-        type="text"
-        value={updateId}
-        onChange={(e) => setUpdateId(e.target.value)}
-        placeholder="Enter ID"
-      />
-      <input
-        type="text"
-        value={updateTask}
-        onChange={(e) => setUpdateTask(e.target.value)}
-        placeholder="Enter new task"
-      />
-      <button onClick={handleUpdateTodo}>Update Item</button>
-
-      <h3>Fetch Single Item</h3>
-      <input
-        type="text"
-        placeholder="Enter ID to fetch"
-        onBlur={(e) => handleFetchTodo(e.target.value)}
-      />
-      {todo && (
-        <p>
-          Fetched Todo: {todo.title} - {todo.should_be_completed_by_date}
-        </p>
-      )}
-    </div>
-  )*/;
 };
 
 export default Home;
