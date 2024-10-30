@@ -82,8 +82,6 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-    //<DataContext.Provider value={[ "1", "2", "3", "4", "5", updateTodo]}>
-  //const [data, fetchTodos, addTodo, deleteTodo, updateTodo, fetchTodo] = useContext(DataContext);
   return (
     <DataContext.Provider value={[ data, fetchTodos, addTodo, deleteTodo, updateTodo, fetchTodo ]}>
       {children}
