@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from 'react';
-import { useId } from 'react';
-//import { DataContext } from '../components/DataProviderTester';
+
 import { DataContext } from '../components/DataProvider';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Home = () => {
 
@@ -52,62 +53,68 @@ const Home = () => {
   };
 
   return (
-    <>
-      <h2>Todos</h2>
-      <h3>{data.length}</h3>
-      {data.length === 0 ? (
-        <p>No Data</p>
-      ) : (
-				<div>
-        <ul>
-          {data.map(item => (
-            <li key={item.id}>{item.title}</li>
-          ))}
-        </ul>
-				</div>
-      )}
-      <h3>Add New Item</h3>
-      <input
-        type="text"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-        placeholder="Enter task"
-      />
-      <input
-        type="date"
-        value={newDate}
-        onChange={(e) => setNewDate(e.target.value)}
-        placeholder="Enter date"
-      />
-      <button onClick={handleAddTodo}>Add Item</button>
+        <div className="d-flex flex-column min-vh-100">
+          {/* Navbar */}
+          <Navbar />
+          {/* Main Content */}
+          <div className="container mt-5 flex-grow-1">
+            <h2>Todos</h2>
+            {data.length === 0 ? (
+              <p>No Data</p>
+            ) : (
+              <div>
+              <ul>
+                {data.map(item => (
+                  <li key={item.id}>{item.title}</li>
+                ))}
+              </ul>
+              </div>
+            )}
+            <h3>Add New Item</h3>
+            <input
+              type="text"
+              value={newTask}
+              onChange={(e) => setNewTask(e.target.value)}
+              placeholder="Enter task"
+            />
+            <input
+              type="date"
+              value={newDate}
+              onChange={(e) => setNewDate(e.target.value)}
+              placeholder="Enter date"
+            />
+            <button onClick={handleAddTodo}>Add Item</button>
 
-      <h3>Update Item</h3>
-      <input
-        type="text"
-        value={updateId}
-        onChange={(e) => setUpdateId(e.target.value)}
-        placeholder="Enter ID"
-      />
-      <input
-        type="text"
-        value={updateTask}
-        onChange={(e) => setUpdateTask(e.target.value)}
-        placeholder="Enter new task"
-      />
-      <button onClick={handleUpdateTodo}>Update Item</button>
+            <h3>Update Item</h3>
+            <input
+              type="text"
+              value={updateId}
+              onChange={(e) => setUpdateId(e.target.value)}
+              placeholder="Enter ID"
+            />
+            <input
+              type="text"
+              value={updateTask}
+              onChange={(e) => setUpdateTask(e.target.value)}
+              placeholder="Enter new task"
+            />
+            <button onClick={handleUpdateTodo}>Update Item</button>
 
-      <h3>Fetch Single Item</h3>
-      <input
-        type="text"
-        placeholder="Enter ID to fetch"
-        onBlur={(e) => handleFetchTodo(e.target.value)}
-      />
-      {todo && (
-        <p>
-          Fetched Todo: {todo.title} - {todo.should_be_completed_by_date}
-        </p>
-      )}
-    </>
+            <h3>Fetch Single Item</h3>
+            <input
+              type="text"
+              placeholder="Enter ID to fetch"
+              onBlur={(e) => handleFetchTodo(e.target.value)}
+            />
+            {todo && (
+              <p>
+                Fetched Todo: {todo.title} - {todo.should_be_completed_by_date}
+              </p>
+            )}
+        </div>
+        {/* Footer */}
+        <Footer />
+      </div>
   );
 };
 
