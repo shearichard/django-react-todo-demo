@@ -1,0 +1,156 @@
+"use client";
+
+import React, { useContext, useEffect, useState } from 'react';
+//import { DataContext } from '../components/DataProviderTester';
+import { DataContext } from '../components/DataProvider';
+
+const Home = () => {
+
+
+	/*
+  let a = null;
+  let b = null;
+  let c = null;
+  let d = null;
+  let e = null;
+  let f = null;
+  */
+  //
+  /*
+  [a , b , c , d , e , f]  = useContext(DataContext);
+  console.log("E")
+  console.log(a)
+  console.log(b)
+  console.log(c)
+  console.log(d)
+  console.log(e)
+  console.log(f)
+  console.log("F")
+  */
+  /*
+  console.log("A")
+  //console.log(DataContext);
+  console.log("B")
+  //const sheadata = useContext(DataContext);
+  //console.log(sheadata[0])
+  console.log("C")
+  //[a , b , c , d , e , f]  = useContext(DataContext);
+  console.log("D")
+  console.log(a)
+  console.log("E")
+  console.log(b)
+  console.log("F")
+  */
+  const [ data, fetchTodos, addTodo, deleteTodo, updateTodo, fetchTodo ] = useContext(DataContext);
+  const [newTask, setNewTask] = useState('');
+  const [newDate, setNewDate] = useState('');
+  const [updateId, setUpdateId] = useState('');
+  const [updateTask, setUpdateTask] = useState('');
+  const [todo, setTodo] = useState(null);
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+  /*
+
+  const handleAddTodo = () => {
+    if (newTask.trim() && newDate.trim()) {
+      const newItem = {
+        task: newTask,
+        should_be_completed_by_date: newDate,
+      };
+      addTodo(newItem);
+      setNewTask('');
+      setNewDate('');
+    }
+  };
+
+  const handleDeleteTodo = (id) => {
+    deleteTodo(id);
+  };
+
+  const handleUpdateTodo = () => {
+    if (updateId.trim() && updateTask.trim()) {
+      const updatedFields = { task: updateTask };
+      updateTodo(updateId, updatedFields);
+      setUpdateId('');
+      setUpdateTask('');
+    }
+  };
+
+  const handleFetchTodo = async (id) => {
+    const fetchedTodo = await fetchTodo(id);
+    setTodo(fetchedTodo);
+  };
+  */
+
+  return (
+    <div>
+      <h2>Data List</h2>
+    </div>
+  );
+  /*
+  return (
+    <div>
+      <h2>Data List</h2>
+      {data.length > 0 ? (
+        <ul>
+          {data.map((item) => (
+            <li key={item.id}>
+              {item.task} - {item.should_be_completed_by_date}
+              <button onClick={() => handleDeleteTodo(item.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No data available.</p>
+      )}
+
+      <h3>Add New Item</h3>
+      <input
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        placeholder="Enter task"
+      />
+      <input
+        type="date"
+        value={newDate}
+        onChange={(e) => setNewDate(e.target.value)}
+        placeholder="Enter date"
+      />
+      <button onClick={handleAddTodo}>Add Item</button>
+
+      <h3>Update Item</h3>
+      <input
+        type="text"
+        value={updateId}
+        onChange={(e) => setUpdateId(e.target.value)}
+        placeholder="Enter ID"
+      />
+      <input
+        type="text"
+        value={updateTask}
+        onChange={(e) => setUpdateTask(e.target.value)}
+        placeholder="Enter new task"
+      />
+      <button onClick={handleUpdateTodo}>Update Item</button>
+
+      <h3>Fetch Single Item</h3>
+      <input
+        type="text"
+        placeholder="Enter ID to fetch"
+        onBlur={(e) => handleFetchTodo(e.target.value)}
+      />
+      {todo && (
+        <p>
+          Fetched Todo: {todo.task} - {todo.should_be_completed_by_date}
+        </p>
+      )}
+    </div>
+  );
+  */
+};
+
+export default Home;
+

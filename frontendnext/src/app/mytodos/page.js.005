@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from 'react';
-import { DataContext } from './DataProvider';
+//import { DataContext } from '../components/DataProviderTester';
+import { DataContext } from '../components/DataProvider';
 
 const Home = () => {
-  const { data, fetchTodos, addTodo, deleteTodo, updateTodo, fetchTodo } = useContext(DataContext);
+
+
+  const [ data, fetchTodos, addTodo, deleteTodo, updateTodo, fetchTodo ] = useContext(DataContext);
   const [newTask, setNewTask] = useState('');
   const [newDate, setNewDate] = useState('');
   const [updateId, setUpdateId] = useState('');

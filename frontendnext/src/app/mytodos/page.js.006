@@ -52,97 +52,37 @@ const Home = () => {
     setTodo(fetchedTodo);
   };
 
-  const myList = [{ id: 1 }, { id: 2 }, { id: 3 }];
-
-/*
-  return (
-    <div>
-      <h2>Todos</h2>
-      <ul>
-        {data.map(item => (
-          <li key={item.id}>{item.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
-*/
-
-  return (
-    <>
-      <h2>Todos</h2>
-      <h3>{data.length}</h3>
-      {data.length === 0 ? (
-        <p>No Data</p>
-      ) : (
-				<div>
-        <ul>
-          {data.map(item => (
-            <li key={item.id}>{item.title}</li>
-          ))}
-        </ul>
-				</div>
-      )}
-      <h3>Add New Item</h3>
-      <input
-        type="text"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-        placeholder="Enter task"
-      />
-      <input
-        type="date"
-        value={newDate}
-        onChange={(e) => setNewDate(e.target.value)}
-        placeholder="Enter date"
-      />
-      <button onClick={handleAddTodo}>Add Item</button>
-
-      <h3>Update Item</h3>
-      <input
-        type="text"
-        value={updateId}
-        onChange={(e) => setUpdateId(e.target.value)}
-        placeholder="Enter ID"
-      />
-      <input
-        type="text"
-        value={updateTask}
-        onChange={(e) => setUpdateTask(e.target.value)}
-        placeholder="Enter new task"
-      />
-      <button onClick={handleUpdateTodo}>Update Item</button>
-
-      <h3>Fetch Single Item</h3>
-      <input
-        type="text"
-        placeholder="Enter ID to fetch"
-        onBlur={(e) => handleFetchTodo(e.target.value)}
-      />
-      {todo && (
-        <p>
-          Fetched Todo: {todo.title} - {todo.should_be_completed_by_date}
-        </p>
-      )}
-    </>
-  );
-
-
-
-
-
-
-	/*
   return (
     <div>
       <h2>Data List</h2>
-      {(data.length) > 0 ? (
-          {data.map((item) => (
-		  <p>X</p>
-	  )
-      ) : (
-        <p>No data available.</p>
-      )}}
-
+			{data.length > 0 ? (
+				<ul>
+					{data.map((item) => {
+						console.log("Item data:", item); // Log each item to the console
+						console.log("Item id:", item.id); // Log each item to the console
+						return (
+							<li key={item.id}>
+								{item.title} - {item.id}
+								<button onClick={() => handleDeleteTodo(item.id)}>Delete</button>
+							</li>
+						);
+						return (
+							/*
+							<li key={item.id}>
+								{item.title} - {item.id}
+								<button onClick={() => handleDeleteTodo(item.id)}>Delete</button>
+							</li>
+							*/
+							<li key={item.id}>
+								A - 888 
+								<button onClick={() => handleDeleteTodo(4)}>Delete</button>
+							</li>
+						);
+					})}
+				</ul>
+			) : (
+				<p>No data available.</p>
+			)}
       <h3>Add New Item</h3>
       <input
         type="text"
@@ -184,20 +124,23 @@ const Home = () => {
           Fetched Todo: {todo.title} - {todo.should_be_completed_by_date}
         </p>
       )}
-    </div>
-	/*/
-	 /*
+		</div>
+	);
+
+  /*
   return (
     <div>
       <h2>Data List</h2>
       {data.length > 0 ? (
         <ul>
           {data.map((item) => (
+            console.log("item data:", item);
+            return(
             <li key={item.id}>
               {item.title} - {item.id}
               <button onClick={() => handleDeleteTodo(item.id)}>Delete</button>
             </li>
-            ))}
+            )))}
         </ul>
       ) : (
         <p>No data available.</p>
@@ -245,7 +188,8 @@ const Home = () => {
         </p>
       )}
     </div>
-  )*/;
+  );
+  */
 };
 
 export default Home;

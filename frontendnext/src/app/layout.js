@@ -1,8 +1,10 @@
 // app/layout.js
+"use client";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
-//
-import BootStrapClient from './components/BootStrapClient.js';
+import BootStrapClient from './components/BootStrapClient';
+import ClientWrapper from './components/ClientWrapper';
+import DataProvider from './components/DataProvider';
 
 export default function RootLayout({ children }) {
     return (
@@ -14,9 +16,14 @@ export default function RootLayout({ children }) {
                 />
             </head>
             <body>
-	    	    {children}
                 <BootStrapClient />
+                <ClientWrapper>
+                  <DataProvider>
+                    {children}
+                  </DataProvider>
+                </ClientWrapper>
             </body>
         </html>
     );
 }
+
