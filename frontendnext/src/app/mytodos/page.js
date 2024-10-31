@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 import { DataContext } from '../components/DataProvider';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ModalExample from "../components/ModalExample";
+import ModalDeleteConfirmation from "../components/ModalDeleteConfirmation";
 
 function ToDoList_HIDE({ data, data_length }) {
   console.log("ToDoList A")
@@ -189,7 +189,7 @@ const Home = () => {
             <hr />
             <ToDoList data={data} key={data.length} />
             <hr />
-							<ModalExample />
+		<ModalDeleteConfirmation />
             <hr />
             <h3>Add New Item</h3>
             <input
