@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 
 import { DataContext } from '../components/DataProvider';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ModalExample from "../components/ModalExample";
 
-function ToDoList({ data, data_length }) {
+function ToDoList_HIDE({ data, data_length }) {
   console.log("ToDoList A")
   console.log(data)
   console.log("ToDoList B")
@@ -20,6 +21,117 @@ function ToDoList({ data, data_length }) {
     </div>
   );
 }
+
+function ToDoList({ data, data_length }) {
+	
+
+  return(
+    <table className="table table-responsive table-striped">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Task</th>
+          <th scope="col">Completed ?</th>
+          <th scope="col">Complete By</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((item) => (
+          <tr key={item.id}>
+            <td>
+	      <DeleteIcon />
+            </td>
+            <td>
+              {item.title} (id={item.id})
+            </td>
+            <td>
+		<i className="bi-alarm" style={{fontSize: '2rem', color: 'cornflowerblue'}}></i>
+            </td>
+            <td>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+}
+
+const DeleteIcon = (props) => {
+
+	const {show, handleClose, handleShow} = props
+
+  return (
+    <a href={"#"} className={"text-decoration-none"}><i className={"bi bi-x-lg"}></i></a>
+  )
+}
+
+const DeleteIcon_HIDE3 = () => {
+  //
+  return(
+        <div style={{ paddingLeft: '8px', paddingRight: '8px', display: 'inline-block' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg text-primary" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+          </svg>
+        </div>
+  )
+}
+const EditIcon = () => {
+  return (
+        <div style={{ paddingLeft: '8px', paddingRight: '8px', display: 'inline-block' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square text-primary" viewBox="0 0 16 16">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+          </svg>
+        </div>
+  )
+}
+const DeleteIcon_HIDE2 = () => {
+
+      const modalRef = useRef();
+
+      const handleIconClick = () => {
+            //const modal = new window.bootstrap.Modal(modalRef.current);
+            //modal.show();
+            alert("X")
+          };
+
+      return (
+            <>
+              <div
+                style={{ paddingLeft: '8px', paddingRight: '8px', display: 'inline-block', cursor: 'pointer' }}
+                onClick={handleIconClick}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg text-primary" viewBox="0 0 16 16">
+                  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                </svg>
+              </div>
+
+              {/* Bootstrap Modal */}
+              <div ref={modalRef} className="modal fade" tabIndex="-1" aria-hidden="true">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title">Confirm Delete</h5>
+                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                      <p>Are you sure you want to delete this item?</p>
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                      </button>
+                      <button type="button" className="btn btn-primary">
+                        Confirm
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          );
+}
+//
 const Home = () => {
 
 
@@ -76,6 +188,8 @@ const Home = () => {
             <h2>Todos</h2>
             <hr />
             <ToDoList data={data} key={data.length} />
+            <hr />
+							<ModalExample />
             <hr />
             <h3>Add New Item</h3>
             <input
