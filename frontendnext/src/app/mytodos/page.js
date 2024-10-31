@@ -6,6 +6,20 @@ import { DataContext } from '../components/DataProvider';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+function ToDoList({ data, data_length }) {
+  console.log("ToDoList A")
+  console.log(data)
+  console.log("ToDoList B")
+  return (
+    <div>
+      <p>A</p>
+      {data.map((item) => (
+        <div key={item.id}>{item.title} (id={item.id})</div>
+      ))}
+      <p>B</p>
+    </div>
+  );
+}
 const Home = () => {
 
 
@@ -34,22 +48,23 @@ const Home = () => {
     }
   };
 
-  const handleDeleteTodo = (id) => {
-    deleteTodo(id);
+  const handleDeleteTodo = async (id) => {
+    await deleteTodo(id);
   };
 
-  const handleUpdateTodo = () => {
+  const handleUpdateTodo = async () => {
     if (updateId.trim() && updateTask.trim()) {
       const updatedFields = { title: updateTask };
-      updateTodo(updateId, updatedFields);
+      await updateTodo(updateId, updatedFields);
       setUpdateId('');
       setUpdateTask('');
+      await fetchTodos()
     }
   };
 
   const handleFetchTodo = async (id) => {
     const fetchedTodo = await fetchTodo(id);
-    setTodo(fetchedTodo);
+    await setTodo(fetchedTodo);
   };
 
   return (
@@ -59,17 +74,9 @@ const Home = () => {
           {/* Main Content */}
           <div className="container mt-5 flex-grow-1">
             <h2>Todos</h2>
-            {data.length === 0 ? (
-              <p>No Data</p>
-            ) : (
-              <div>
-              <ul>
-                {data.map(item => (
-                  <li key={item.id}>{item.title}</li>
-                ))}
-              </ul>
-              </div>
-            )}
+            <hr />
+            <ToDoList data={data} key={data.length} />
+            <hr />
             <h3>Add New Item</h3>
             <input
               type="text"

@@ -65,18 +65,34 @@ export const DataProvider = ({ children }) => {
       console.error('Error deleting todo:', error);
     }
   };
-
   // Update a to-do item by ID (PATCH)
   const updateTodo = async (id, updatedFields) => {
     try {
+      console.log("updateTodo A")	    
+      console.log(updatedFields)	    
+      console.log("updateTodo B")	    
       const response = await axios.patch(`http://localhost:8000/api/v1/todos/${id}/`, updatedFields, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      setData((prevData) =>
-        prevData.map((item) => (item.id === id ? response.data : item))
-      );
+      console.log("updateTodo C")	    
+      console.log(response.data)
+      console.log("updateTodo D")	    
+			setData(function(prevData) {
+				return prevData.map(function(item) {
+					if (item.id === id) {
+						console.log("updateTodo D1")	    
+						return response.data;
+					} else {
+						console.log("updateTodo D2")	    
+						return item;
+					}
+				});
+			});
+      console.log("updateTodo E")	    
+			console.log(data)
+      console.log("updateTodo F")	    
     } catch (error) {
       console.error('Error updating todo:', error);
     }
