@@ -13,21 +13,6 @@ const logtestfunction = (s) => {
   console.log("log test b")
 }
 //
-function ToDoList_HIDE({ data, data_length }) {
-  console.log("ToDoList A")
-  console.log(data)
-  console.log("ToDoList B")
-  return (
-    <div>
-      <p>A</p>
-      {data.map((item) => (
-        <div key={item.id}>{item.title} (id={item.id})</div>
-      ))}
-      <p>B</p>
-    </div>
-  );
-}
-//
 function ToDoList({ data, data_length }) {
   return(
     <table className="table table-responsive table-striped">
@@ -69,16 +54,6 @@ const DeleteIcon = (props) => {
   )
 }
 
-const DeleteIcon_HIDE3 = () => {
-  //
-  return(
-        <div style={{ paddingLeft: '8px', paddingRight: '8px', display: 'inline-block' }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg text-primary" viewBox="0 0 16 16">
-            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-          </svg>
-        </div>
-  )
-}
 const EditIcon = () => {
   return (
         <div style={{ paddingLeft: '8px', paddingRight: '8px', display: 'inline-block' }}>
@@ -88,52 +63,6 @@ const EditIcon = () => {
           </svg>
         </div>
   )
-}
-const DeleteIcon_HIDE2 = () => {
-
-      const modalRef = useRef();
-
-      const handleIconClick = () => {
-            //const modal = new window.bootstrap.Modal(modalRef.current);
-            //modal.show();
-            alert("X")
-          };
-
-      return (
-            <>
-              <div
-                style={{ paddingLeft: '8px', paddingRight: '8px', display: 'inline-block', cursor: 'pointer' }}
-                onClick={handleIconClick}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg text-primary" viewBox="0 0 16 16">
-                  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-                </svg>
-              </div>
-
-              {/* Bootstrap Modal */}
-              <div ref={modalRef} className="modal fade" tabIndex="-1" aria-hidden="true">
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title">Confirm Delete</h5>
-                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                      <p>Are you sure you want to delete this item?</p>
-                    </div>
-                    <div className="modal-footer">
-                      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-                        Cancel
-                      </button>
-                      <button type="button" className="btn btn-primary">
-                        Confirm
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          );
 }
 //
 const Home = () => {
