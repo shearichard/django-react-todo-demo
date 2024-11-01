@@ -5,8 +5,14 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 import { DataContext } from '../components/DataProvider';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ModalDeleteConfirmation from "../components/ModalDeleteConfirmation";
+import DeleteIconAndConfirmation from "../components/DeleteIconAndConfirmation";
 
+const logtestfunction = (s) => {
+  console.log("log test a")
+  console.log(s)
+  console.log("log test b")
+}
+//
 function ToDoList_HIDE({ data, data_length }) {
   console.log("ToDoList A")
   console.log(data)
@@ -21,10 +27,8 @@ function ToDoList_HIDE({ data, data_length }) {
     </div>
   );
 }
-
+//
 function ToDoList({ data, data_length }) {
-	
-
   return(
     <table className="table table-responsive table-striped">
       <thead>
@@ -39,13 +43,13 @@ function ToDoList({ data, data_length }) {
         {data.map((item) => (
           <tr key={item.id}>
             <td>
-	      <DeleteIcon />
+              <DeleteIconAndConfirmation logtestfunction={logtestfunction} todoid={item.id} />
             </td>
             <td>
               {item.title} (id={item.id})
             </td>
             <td>
-		<i className="bi-alarm" style={{fontSize: '2rem', color: 'cornflowerblue'}}></i>
+              <i className="bi-alarm" style={{fontSize: '2rem', color: 'cornflowerblue'}}></i>
             </td>
             <td>
             </td>
@@ -55,10 +59,10 @@ function ToDoList({ data, data_length }) {
     </table>
   )
 }
-
+//
 const DeleteIcon = (props) => {
 
-	const {show, handleClose, handleShow} = props
+  const {show, handleClose, handleShow} = props
 
   return (
     <a href={"#"} className={"text-decoration-none"}><i className={"bi bi-x-lg"}></i></a>
@@ -189,7 +193,7 @@ const Home = () => {
             <hr />
             <ToDoList data={data} key={data.length} />
             <hr />
-		<ModalDeleteConfirmation />
+              <DeleteIconAndConfirmation logtestfunction={logtestfunction} />
             <hr />
             <h3>Add New Item</h3>
             <input
