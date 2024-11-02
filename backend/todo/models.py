@@ -1,16 +1,12 @@
-# todo/models.py
 from django.db import models
-
 
 class Category(models.Model):
     title = models.CharField(max_length=20, primary_key=True, unique=True, blank=False)
     deletable = models.BooleanField(default=True)
 
-    '''
     class Meta:
         verbose_name = "To Do Category"
         verbose_name_plural = "To Do Categories"
-    '''
 
     def __str__(self):
         return str(self.title)
@@ -31,13 +27,9 @@ class Category(models.Model):
         #
         super().save(*args, **kwargs)
 
-
-
-
-'''
 class Todo(models.Model):
     title = models.CharField(max_length=120)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     is_completed = models.BooleanField(default=False)
     should_be_completed_by_date = models.DateTimeField(null=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
@@ -50,4 +42,3 @@ class Todo(models.Model):
 
     def __str__(self):
         return str(self.title)
-'''
