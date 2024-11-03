@@ -3,8 +3,9 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 //
 import { DeleteIconAndConfirmation } from "./DeleteIconAndConfirmation";
+import { ToggleCompletedIconAndConfirmation } from "./ToggleCompletedIconAndConfirmation";
 //
-export const ToDoList = ({ data, data_length, handleDeleteTodo, logtestfunction }) => {
+export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleCompletion, logtestfunction }) => {
   return(
     <table className="table table-responsive table-striped">
       <thead>
@@ -19,12 +20,22 @@ export const ToDoList = ({ data, data_length, handleDeleteTodo, logtestfunction 
         {data.map((item) => (
           <tr key={item.id}>
             <td>
-              <DeleteIconAndConfirmation handleDeleteTodo={handleDeleteTodo} logtestfunction={logtestfunction} todoid={item.id} />
+              <DeleteIconAndConfirmation 
+                handleDeleteTodo={handleDeleteTodo} 
+                logtestfunction={logtestfunction} 
+                todoid={item.id} 
+              />
             </td>
             <td>
               {item.title} (id={item.id})
             </td>
             <td>
+              <ToggleCompletedIconAndConfirmation 
+                handleToggleCompletion={handleToggleCompletion} 
+                logtestfunction={logtestfunction} 
+                todoid={item.id} 
+                isCompleted={item.is_completed} 
+              />
             </td>
             <td>
             </td>

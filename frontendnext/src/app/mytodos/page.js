@@ -57,11 +57,9 @@ const Home = () => {
       setNewDate('');
     }
   };
-
   const handleDeleteTodo = async (id) => {
     await deleteTodo(id);
   };
-
   const handleUpdateTodo = async () => {
     if (updateId.trim() && updateTask.trim()) {
       const updatedFields = { title: updateTask };
@@ -71,7 +69,12 @@ const Home = () => {
       await fetchTodos()
     }
   };
-
+  const handleToggleCompletion = async (id, isCompleted) => {
+    console.log(`handleToggleCompletion for ${id}. State before change ${isCompleted} .`)
+    const updatedFields = { is_completed : !isCompleted };
+    await updateTodo(id, updatedFields);
+    await fetchTodos()
+  };
   const handleFetchTodo = async (id) => {
     const fetchedTodo = await fetchTodo(id);
     await setTodo(fetchedTodo);
@@ -89,9 +92,9 @@ const Home = () => {
               data={data} 
               key={data.length} 
               handleDeleteTodo={handleDeleteTodo} 
+              handleToggleCompletion={handleToggleCompletion} 
               logtestfunction={logtestfunction}
             />
-            <hr />
             <h3>Add New Item</h3>
             <input
               type="text"
