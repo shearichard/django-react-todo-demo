@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 //
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
-function DeleteIconAndConfirmation({logtestfunction, todoid}) {
+//
+export const DeleteIconAndConfirmation = ({handleDeleteTodo, logtestfunction, todoid}) => {
     const [show, setShow] = useState(false);
 
+    const handleDeleteAndClose = async () => {
+      logtestfunction(`handleDeleteAndClose for ${todoid}`)
+      await handleDeleteTodo(todoid)
+      handleClose()	
+    }
+    //
     const handleClose = () => {
       setShow(false);
-      logtestfunction("handlClose")
+      logtestfunction("handleClose")
     }
     //
     const handleShow = () => {
@@ -36,10 +42,10 @@ function DeleteIconAndConfirmation({logtestfunction, todoid}) {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Close
+              Cancel
             </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
+            <Button variant="primary" onClick={handleDeleteAndClose}>
+              Confirm
             </Button>
           </Modal.Footer>
         </Modal>

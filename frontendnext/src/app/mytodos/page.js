@@ -3,46 +3,12 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 
 import { DataContext } from '../components/DataProvider';
+import { ToDoList } from '../components/ToDoList';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import DeleteIconAndConfirmation from "../components/DeleteIconAndConfirmation";
 
 const logtestfunction = (s) => {
-  console.log("log test a")
   console.log(s)
-  console.log("log test b")
-}
-//
-function ToDoList({ data, data_length }) {
-  return(
-    <table className="table table-responsive table-striped">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Task</th>
-          <th scope="col">Completed ?</th>
-          <th scope="col">Complete By</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr key={item.id}>
-            <td>
-              <DeleteIconAndConfirmation logtestfunction={logtestfunction} todoid={item.id} />
-            </td>
-            <td>
-              {item.title} (id={item.id})
-            </td>
-            <td>
-              <i className="bi-alarm" style={{fontSize: '2rem', color: 'cornflowerblue'}}></i>
-            </td>
-            <td>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )
 }
 //
 const DeleteIcon = (props) => {
@@ -66,7 +32,6 @@ const EditIcon = () => {
 }
 //
 const Home = () => {
-
 
   const [data, fetchTodos, addTodo, deleteTodo, updateTodo, fetchTodo] = useContext(DataContext);
   const [newTask, setNewTask] = useState('');
@@ -120,9 +85,12 @@ const Home = () => {
           <div className="container mt-5 flex-grow-1">
             <h2>Todos</h2>
             <hr />
-            <ToDoList data={data} key={data.length} />
-            <hr />
-              <DeleteIconAndConfirmation logtestfunction={logtestfunction} />
+            <ToDoList 
+              data={data} 
+              key={data.length} 
+              handleDeleteTodo={handleDeleteTodo} 
+              logtestfunction={logtestfunction}
+            />
             <hr />
             <h3>Add New Item</h3>
             <input
@@ -171,6 +139,5 @@ const Home = () => {
       </div>
   );
 };
-
 export default Home;
 

@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 //
 import { DeleteIconAndConfirmation } from "./DeleteIconAndConfirmation";
 //
-export const ToDoList = ({ data, data_length, handleDeleteTodo }) ==> {
+export const ToDoList = ({ data, data_length, handleDeleteTodo, logtestfunction }) => {
   return(
     <table className="table table-responsive table-striped">
       <thead>
