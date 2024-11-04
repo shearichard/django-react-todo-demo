@@ -59,3 +59,24 @@ This project uses pytest and, once the virtual environment is invoked and the wo
 $ pytests
 ```
 
+# Standardised Errors
+This project uses [drf-standardized-errors](https://github.com/ghazi-git/drf-standardized-errors) to approach the [RFC-7807](https://www.rfc-editor.org/rfc/rfc7807) standard for standardised errors.
+
+Here's an example of it in use, in a POST with an empty payload.
+
+```
+$ curl -X POST http://localhost:8000/api/v1/todos/ -H "Content-Type: application/json" -d {} | jq
+{
+  "type": "validation_error",
+  "errors": [
+    {
+      "code": "required",
+      "detail": "This field is required.",
+      "attr": "title"
+    }
+  ]
+}
+```
+
+NOTE: There is an alternative library which covers similar ground, [drf-problems](https://github.com/shivanshs9/drf-problems/), but when last tested, August 2024, didn't work as expected.
+
