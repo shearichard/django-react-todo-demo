@@ -12,6 +12,7 @@ uritemplate = "*"
 pyyaml = "*"
 drf-standardized-errors = {extras = ["openapi"], version = "*"}
 drf-spectacular = "*"
+django-guid = "*"
 
 [requires]
 python_version = "3.10"
