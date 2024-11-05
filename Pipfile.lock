@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "dc91cc46d7d7de06e83750a645d7d8aa306414a1e8d8e4999059c632a4b5012b"
+            "sha256": "b6cfb1141b60dee08067e5b8d17f04dffb99341a0c5ecfc99571ca23ba229c7d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,15 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==24.2.0"
+        },
+        "dj-loguru": {
+            "hashes": [
+                "sha256:5dcdbc2ddde7f632a12b1b7da73467d75935cde04ea079a12889fa22a165ae55",
+                "sha256:f6da7a635f23dc64e96921bc5416ae5e5b51df8db3319d3cf1aa9263dfb327d3"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==0.2.2"
         },
         "django": {
             "hashes": [
@@ -112,6 +121,14 @@
             ],
             "markers": "python_version >= '3.9'",
             "version": "==2024.10.1"
+        },
+        "loguru": {
+            "hashes": [
+                "sha256:003d71e3d3ed35f0f8984898359d65b79e5b21943f78af86aa5491210429b8eb",
+                "sha256:e671a53522515f34fd406340ee968cb9ecafbc4b36c679da03c18fd8d0bd51ac"
+            ],
+            "markers": "python_version >= '3.5'",
+            "version": "==0.7.2"
         },
         "pyyaml": {
             "hashes": [
