@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "rest_framework",
     'todo',
     "django_extensions",
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -164,4 +165,13 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ],
 	"EXCEPTION_HANDLER": "drf_standardized_errors.handler.exception_handler",
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+# Settings related to drf-spectacular START
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Todo Django/Next.js Integration API',
+    'DESCRIPTION': 'Demo project for Django/Next.js integration',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+# Settings related to drf-spectacular END 
