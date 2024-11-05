@@ -57,9 +57,11 @@ INSTALLED_APPS = [
     'todo',
     "django_extensions",
     'drf_spectacular',
+    'django-guid',
 ]
 
 MIDDLEWARE = [
+    "django_guid.middleware.guid_middleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
