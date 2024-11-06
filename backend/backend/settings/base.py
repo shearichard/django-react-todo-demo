@@ -13,7 +13,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import sys
+#
 from django.core.exceptions import ImproperlyConfigured
+from dj_easy_log import load_loguru
+#from loguru import logger
+#from django import logger
+#
+from .utilities import generate_logging_config
 
 
 ###################################################################################
@@ -192,9 +198,14 @@ SPECTACULAR_SETTINGS = {
 }
 # Settings related to drf-spectacular END 
 # Settings related to dj_loguru START
-LOGGING_CONFIG = None
+'''
 
 LOGGING = {
+    'formatters': {
+        'medium': {
+            'format': '%(levelname)s %(asctime)s [%(correlation_id)s] %(name)s %(message)s'
+        }
+    },
     "formats": {
         "default": "<green>ts={time:YYYY-MM-DD HH:mm:ss.SSS}</green> |"
         " <level>level={level:<8}</level> |"
@@ -222,4 +233,68 @@ LOGGING = {
         },
     },
 }
+'''
+
+'''
+LOGGING_CONFIG = None
+LOGGING = generate_logging_config(loglevel='INFO')
+'''
+# Django logging configuration with GUIDs
+# Django logging configuration with file and console output, including GUIDs
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s [%(correlation_id)s] %(name)s %(message)s'
+        },
+    },
+    'filters': {
+        'correlation_id': {
+            '()': 'django_guid.log_filters.CorrelationId'
+        }
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'django-react-todo-demo.log',
+            'formatter': 'verbose',
+            'filters': ['correlation_id'],
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+            'filters': ['correlation_id'],
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'todo': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'backend': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
+
+
 # Settings related to dj_loguru STOP
+
+#load_loguru(globals(), logging_config=generate_logging_config(loglevel='INFO'))
+ 
+#   - Rotate daily at 23:59UTC. 
+#   - Retain ten copies of old logs before discarding.
+#   - After rotation zip the retained log files
+#logger.add("neo_web_app.log", rotation="23:59", retention="10 days", compression="zip" )
+#logger.add("neo_web_app.log", rotation="23:59", retention="1 day", compression="zip" )

@@ -8,9 +8,10 @@ from rest_framework.exceptions import (  # noqa : F401
     ValidationError,
     NotAcceptable,
 )
-from loguru import logger
-
-
+#from loguru import logger
+import logging
+# Use Django’s logging
+logger = logging.getLogger(__name__)
 
 class APIHealthView(APIView):
     def get(self, request):

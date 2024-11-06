@@ -14,6 +14,7 @@ drf-standardized-errors = {extras = ["openapi"], version = "*"}
 drf-spectacular = "*"
 django-guid = "*"
 dj-loguru = "*"
+django-easy-logging = "*"
 
 [requires]
 python_version = "3.10"
