@@ -1,3 +1,6 @@
 # This file  doesn't currently hold the correct values
 # Django Secret Key
 export TODO_SECRET_KEY="PLACEHOLDER_VALUE_TODO_SECRET_KEY"
+# Used to include those packages which are only used in development
+# Hence this value should be changed to 0 for production.
+export TODO_ACTIVATE_DEV_TOOLS=1

@@ -19,7 +19,7 @@ dj-loguru = "*"
 python_version = "3.10"
 
 [dev-packages]
-django-extensions = "*"
 flake8 = "*"
 pytest = "*"
 black = "*"
+django-extensions = "*"

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 from django.core.exceptions import ImproperlyConfigured
 
 
@@ -25,7 +26,13 @@ def get_env_variable(var_name):
         raise ImproperlyConfigured(error_msg)
 
 
-###################################################################################
+# #################################################################################
+# The following conditional allows for the django_extensions options being shown
+# when 'help' is executed. There may be a better way of doing this various ideas
+# here https://stackoverflow.com/questions/1291755/how-can-i-tell-whether-my-django-application-is-running-on-development-server-or
+# #################################################################################
+#RUNNING_DEVSERVER = ((len(sys.argv) > 1 and sys.argv[1] == 'runserver') or (len(sys.argv) > 1 and sys.argv[1] == 'help'))
+RUNNING_DEVSERVER = (get_env_variable("TODO_ACTIVATE_DEV_TOOLS") == "1")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,7 +52,7 @@ ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
 
 
 # Application definition
-INSTALLED_APPS = [
+BASE_INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -55,11 +62,18 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     'todo',
-    "django_extensions",
     'drf_spectacular',
-    'django-guid',
+    'django_guid',
 ]
-
+DEV_ONLY_INSTALLED_APPS = [
+    'django_extensions',
+]
+#
+if RUNNING_DEVSERVER:
+    INSTALLED_APPS = BASE_INSTALLED_APPS + DEV_ONLY_INSTALLED_APPS
+else:
+    INSTALLED_APPS = BASE_INSTALLED_APPS
+#
 MIDDLEWARE = [
     "django_guid.middleware.guid_middleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -177,3 +191,35 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
 }
 # Settings related to drf-spectacular END 
+# Settings related to dj_loguru START
+LOGGING_CONFIG = None
+
+LOGGING = {
+    "formats": {
+        "default": "<green>ts={time:YYYY-MM-DD HH:mm:ss.SSS}</green> |"
+        " <level>level={level:<8}</level> |"
+        " <cyan>file={file}</cyan> <cyan>module={module}</cyan> <cyan>func={function}</cyan> <cyan>line={line}</cyan>"
+        " - <level>{message}</level>",
+    },
+    "sinks": {
+        "console": {
+            "output": sys.stderr,
+            "format": "default",
+            "level": "DEBUG",
+        },
+        "file": {
+            "output": "/tmp/django-react-todo-demo-log.log",
+            "format": "default",
+            "level": "DEBUG",
+            "rotation": "1 day",
+        },
+    },
+    "loggers": {
+        "dj_loguru": {
+            "sinks": ["console", "file"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
+}
+# Settings related to dj_loguru STOP
