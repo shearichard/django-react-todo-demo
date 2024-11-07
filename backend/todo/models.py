@@ -34,7 +34,7 @@ class Todo(models.Model):
     should_be_completed_by_date = models.DateTimeField(null=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, default="N/A")
+    category = models.ForeignKey(Category, to_field="title", on_delete=models.PROTECT, default="N/A")
 
     class Meta:
         verbose_name = "To Do"

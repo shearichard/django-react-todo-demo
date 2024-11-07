@@ -4,11 +4,36 @@ info:
   version: 1.0.0
   description: Demo project for Django/Next.js integration
 paths:
-  /api/v1/todos/:
+  /todo/api/v1/healthcheck/:
     get:
-      operationId: api_v1_todos_list
+      operationId: healthcheck_retrieve
       tags:
-      - api
+      - healthcheck
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /todo/api/v1/healthcheckmockedfailure/:
+    get:
+      operationId: healthcheckmockedfailure_retrieve
+      description: See also https://drf-standardized-errors.readthedocs.io/en/latest/error_response.html#multiple-errors-support
+      tags:
+      - healthcheckmockedfailure
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /todo/api/v1/todos/:
+    get:
+      operationId: todos_list
+      tags:
+      - todos
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -23,9 +48,9 @@ paths:
                   $ref: '#/components/schemas/Todo'
           description: ''
     post:
-      operationId: api_v1_todos_create
+      operationId: todos_create
       tags:
-      - api
+      - todos
       requestBody:
         content:
           application/json:
@@ -43,9 +68,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Todo'
           description: ''
-  /api/v1/todos/{id}/:
+  /todo/api/v1/todos/{id}/:
     get:
-      operationId: api_v1_todos_retrieve
+      operationId: todos_retrieve
       parameters:
       - in: path
         name: id
@@ -54,7 +79,7 @@ paths:
         description: A unique integer value identifying this To Do.
         required: true
       tags:
-      - api
+      - todos
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -67,7 +92,7 @@ paths:
                 $ref: '#/components/schemas/Todo'
           description: ''
     put:
-      operationId: api_v1_todos_update
+      operationId: todos_update
       parameters:
       - in: path
         name: id
@@ -76,7 +101,7 @@ paths:
         description: A unique integer value identifying this To Do.
         required: true
       tags:
-      - api
+      - todos
       requestBody:
         content:
           application/json:
@@ -95,7 +120,7 @@ paths:
                 $ref: '#/components/schemas/Todo'
           description: ''
     patch:
-      operationId: api_v1_todos_partial_update
+      operationId: todos_partial_update
       parameters:
       - in: path
         name: id
@@ -104,7 +129,7 @@ paths:
         description: A unique integer value identifying this To Do.
         required: true
       tags:
-      - api
+      - todos
       requestBody:
         content:
           application/json:
@@ -122,7 +147,7 @@ paths:
                 $ref: '#/components/schemas/Todo'
           description: ''
     delete:
-      operationId: api_v1_todos_destroy
+      operationId: todos_destroy
       parameters:
       - in: path
         name: id
@@ -131,7 +156,7 @@ paths:
         description: A unique integer value identifying this To Do.
         required: true
       tags:
-      - api
+      - todos
       security:
       - cookieAuth: []
       - basicAuth: []
