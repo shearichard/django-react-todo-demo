@@ -1,4 +1,4 @@
-# Django Development Notes
+# Django Readme 
 
 ## Pipenv/Virtualenv
 
