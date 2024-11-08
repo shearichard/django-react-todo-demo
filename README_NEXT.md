@@ -1,5 +1,5 @@
 # Next.js Frontend Readme
-*Within this project there are two frontends, this one is based on Next.js, the other one X is based on vanilla React.js*
+*Within this project there are two frontends, this one, 'frontendnext', is based on Next.js, the other one, 'frontend', is based on vanilla React.js*
 
 ## Testing 
 
