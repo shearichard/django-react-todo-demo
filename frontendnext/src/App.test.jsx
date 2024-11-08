@@ -1,3 +1,5 @@
+import Footer from "./app/components/Footer";
+
 import { describe, it, expect } from 'vitest';
 
 import {
@@ -18,8 +20,10 @@ describe('something truthy and falsy', () => {
 });
 
 //First attempt at component testing
-describe('Item', () => {
+describe('Footer', () => {
     it('renders all properties', () => {
         render(<Footer />);
+        expect(screen.getByText('A Next/Django Demo App.')).toBeInTheDocument();
+        expect(screen.getByText('© 2024 Richard Shea. All rights reserved.')).toBeInTheDocument();
     });
 });
