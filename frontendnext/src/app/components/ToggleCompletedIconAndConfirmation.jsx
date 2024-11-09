@@ -30,7 +30,7 @@ export const ToggleCompletedIconAndConfirmation = ({handleToggleCompletion, logt
           <i
             className="bi bi-check-circle text-primary "
             role="button"
-            aria-label="Delete"
+            aria-label="Mark Uncompleted"
             onClick={handleShow}
             style={{ cursor: 'pointer', fontSize: '1.5rem', color: 'primary' }}
           ></i>
@@ -38,7 +38,7 @@ export const ToggleCompletedIconAndConfirmation = ({handleToggleCompletion, logt
           <i
             className="bi bi-circle text-primary "
             role="button"
-            aria-label="Delete"
+            aria-label="Mark Completed"
             onClick={handleShow}
             style={{ cursor: 'pointer', fontSize: '1.5rem', color: 'primary' }}
           ></i>
