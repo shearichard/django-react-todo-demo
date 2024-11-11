@@ -9,9 +9,8 @@ export const metadata = {
 export default function Home() {
     return (
         <div className="d-flex flex-column min-vh-100">
-  {/* Navbar */}
-  <Navbar />
-
+            {/* Navbar */}
+            <Navbar />
             {/* Main Content */}
             <div className="container mt-5 flex-grow-1">
                 <div className="jumbotron">
@@ -25,7 +24,7 @@ export default function Home() {
                 </div>
             </div>
             {/* Footer */}
-      <Footer />
+            <Footer />
         </div>
     );
 }
