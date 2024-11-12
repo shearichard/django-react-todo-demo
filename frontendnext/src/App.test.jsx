@@ -72,7 +72,7 @@ describe.skip('ToDoList - soon to be redundant', () => {
 })
 
 // Mock Data and Functions
-const mockData = [
+const mockTodoData = [
     {
         "id": 101,
         "title": "Test 1",
@@ -97,36 +97,104 @@ const mockData = [
 
 ];
 // Custom Wrapper using the DataContext
-//const DataProviderWrapper = ({ children }) => (
-//  <DataContext.Provider value={mockData}>{children}</DataContext.Provider>
-//);
+const DataProviderWrapper = ({ children }) => (
+      <DataContext.Provider value={mockTodoData}>{children}</DataContext.Provider>
+);
 
 const mockFunctionOne = vi.fn();
 const mockFunctionTwo = vi.fn();
 const mockFunctionThree = vi.fn();
 
-// Custom Wrapper for the DataProvider
-const DataProviderWrapper = ({ children }) => (
-  <DataContext.Provider value={mockData}>{children}</DataContext.Provider>
-);
-test("renders table rows based on passed collection", () => {
-    render(<ToDoList
-        data={mockData} 
-        key={mockData.length} 
+describe.skip('ToDoList - soon to be redundant 2', () => {
+    test("renders table rows based on passed collection", () => {
+        render(<ToDoList
+        data={mockTodoData} 
+        key={mockTodoData.length} 
         handleDeleteTodo={mockFunctionOne}
         handleToggleCompletion={mockFunctionTwo}
         logtestfunction={mockFunctionThree} />);
 
-    // Check if each row is rendered with the correct data
-    if (true){
-        mockData.forEach((item) => {
-            expect(screen.getByText(new RegExp(item.title, "i"))).toBeInTheDocument(); 
-        });
-    }
-    if (false){
+        // Check if each row is rendered with the correct data
+        console.log("XXX-A")
         screen.debug()
-    }
+        console.log("XXX-B")
+        mockTodoData.forEach((item) => {
+        //let todo_describer = `{item.title} ({item.id})`
+        //let flexiblePattern = todo_describer.replace(/\s+/g, "\\s*");
+        //expect(screen.getByText(new RegExp(flexiblePattern, "i"))).toBeInTheDocument(); 
+        let lv = `${item.title} (${item.id})`
+        /*
+        let test_var = `foo`
+        let test_string_var = `--- ${test_var} ---`
+        */
+        let tidied_up_td_value= item.title.replace(/\s+/g, ' ').trim();
+            console.log("XXX-C")
+        console.log(lv)
+            console.log("XXX-D")
+        //console.log(test_var)
+            console.log("XXX-E")
+        //console.log(test_string_var)
+            console.log("XXX-F")
+        console.log(tidied_up_td_value)
+            console.log("XXX-G")
+        expect(
+            screen.getByText((lv) => {
+            //Normalize whitespace in `text` to make matching more reliable
+            const normalizedText = item.title.replace(/\s+/g, ' ').trim();
+            return normalizedText.includes(lv);
+            })
+            ).toBeInTheDocument();
+        //
+        //expect(screen.getByText(new RegExp(item.title, "i"))).toBeInTheDocument(); 
+        /*
+        expect(
+            screen.getByText((content, element) => {
+            // Normalize whitespace in `content` to make matching more reliable
+            const normalizedContent = content.replace(/\s+/g, ' ').trim();
+            return normalizedContent.includes(lv);
+            })
+        ).toBeInTheDocument();
+        */
+        });
+    });
+})
+/*
+// TableComponent.test.js
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import TableComponent from './TableComponent';
+
+const mockTodoData = [
+    { "foo": "Test 001 (id=001)" },
+    { "foo": "Test 002 (id=002)" },
+    { "foo": "Test 003 (id=003)" }
+];
+*/
+
+describe('ToDoList - soon to be redundant 4', () => {
+    test('renders table cells containing each "foo" attribute from mockTodoData', () => {
+        render(<ToDoList
+          data={mockTodoData} 
+          key={mockTodoData.length} 
+            handleDeleteTodo={mockFunctionOne}
+            handleToggleCompletion={mockFunctionTwo}
+            logtestfunction={mockFunctionThree} />);
+        // Iterate over each item in mockTodoData
+        mockTodoData.forEach((item) => {
+            // Define a multi-line function to match the cell content
+            const matchText = (content) => {
+                // Remove extra spaces and match against the item’s foo attribute
+                const normalizedContent = content.replace(/\s+/g, ' ').trim();
+                return normalizedContent.includes(item.title);
+            };
+
+            // Use screen.getByText with the function to verify the presence of each cell
+            expect(screen.getByText(matchText)).toBeInTheDocument();
+        });
+    });
 });
+
 
 describe.skip('ToDoList', () => {
             //console.log(item.title)
@@ -150,7 +218,7 @@ describe.skip('ToDoList', () => {
   });
 });
 
-describe.skip('ToDoList -delete soon', () => {
+describe.skip('ToDoList - delete soon', () => {
   it('renders with provided data and functions', () => {
     render(
       <ToDoList
