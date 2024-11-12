@@ -60,17 +60,6 @@ describe('ToggleCompletedIconAndConfirmation', () => {
     });
 })
 // Test ToDoList
-describe.skip('ToDoList - soon to be redundant', () => {
-    it('renders all properties', () => {
-        render(<ToDoList
-              data={data} 
-              key={data.length} 
-              handleDeleteTodo={handleDeleteTodo} 
-              handleToggleCompletion={handleToggleCompletion} 
-              logtestfunction={logtestfunction} />);
-    });
-})
-
 // Mock Data and Functions
 const mockTodoData = [
     {
@@ -100,11 +89,11 @@ const mockTodoData = [
 const DataProviderWrapper = ({ children }) => (
       <DataContext.Provider value={mockTodoData}>{children}</DataContext.Provider>
 );
-
+//
 const mockFunctionOne = vi.fn();
 const mockFunctionTwo = vi.fn();
 const mockFunctionThree = vi.fn();
-
+//
 describe.skip('ToDoList - soon to be redundant 2', () => {
     test("renders table rows based on passed collection", () => {
         render(<ToDoList
@@ -144,33 +133,9 @@ describe.skip('ToDoList - soon to be redundant 2', () => {
             return normalizedText.includes(lv);
             })
             ).toBeInTheDocument();
-        //
-        //expect(screen.getByText(new RegExp(item.title, "i"))).toBeInTheDocument(); 
-        /*
-        expect(
-            screen.getByText((content, element) => {
-            // Normalize whitespace in `content` to make matching more reliable
-            const normalizedContent = content.replace(/\s+/g, ' ').trim();
-            return normalizedContent.includes(lv);
-            })
-        ).toBeInTheDocument();
-        */
         });
     });
 })
-/*
-// TableComponent.test.js
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import TableComponent from './TableComponent';
-
-const mockTodoData = [
-    { "foo": "Test 001 (id=001)" },
-    { "foo": "Test 002 (id=002)" },
-    { "foo": "Test 003 (id=003)" }
-];
-*/
 
 describe('ToDoList - soon to be redundant 4', () => {
     test('renders table cells containing each "foo" attribute from mockTodoData', () => {
@@ -194,76 +159,5 @@ describe('ToDoList - soon to be redundant 4', () => {
         });
     });
 });
-
-
-describe.skip('ToDoList', () => {
-            //console.log(item.title)
-            //let title_string = `{item.title} ({item.id})`;
-  it('renders with provided data and functions', () => {
-    render(
-      <ToDoList
-        functionOne={mockFunctionOne}
-        functionTwo={mockFunctionTwo}
-        functionThree={mockFunctionThree}
-      />,
-      { wrapper: DataProviderWrapper }
-    );
-
-    // Assertions for data display
-    expect(screen.getByText('Test 1 (id=101)')).toBeInTheDocument();
-    expect(screen.getByText('Test 2 (id=102)')).toBeInTheDocument();
-    expect(screen.getByText('Test 3 (id=103)')).toBeInTheDocument();
-
-    // Additional assertions can be added here
-  });
-});
-
-describe.skip('ToDoList - delete soon', () => {
-  it('renders with provided data and functions', () => {
-    render(
-      <ToDoList
-        functionOne={mockFunctionOne}
-        functionTwo={mockFunctionTwo}
-        functionThree={mockFunctionThree}
-      />,
-      { wrapper: DataProviderWrapper }
-    );
-
-    // Assertions
-    expect(screen.getByText('Task 1')).toBeInTheDocument();
-    expect(screen.getByText('Task 2')).toBeInTheDocument();
-
-    // Additional assertions based on expected behavior
-  });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
