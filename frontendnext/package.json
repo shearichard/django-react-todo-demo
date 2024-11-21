@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
+    "testverbose": "vitest --verbose",
     "testjson": "vitest --reporter=json"
   },
   "dependencies": {
