@@ -95,28 +95,28 @@ const mockFunctionTwo = vi.fn();
 const mockFunctionThree = vi.fn();
 //
 describe('ToDoList', () => {
-    test("renders table rows based on passed collection", () => {
-        render(<ToDoList
-            data={mockTodoData} 
-            key={mockTodoData.length} 
-            handleDeleteTodo={mockFunctionOne}
-            handleToggleCompletion={mockFunctionTwo}
-            logtestfunction={mockFunctionThree} />);
-        // Iterate over each item in mockTodoData
-        mockTodoData.forEach((item) => {
-            // Define a multi-line function to match the cell content
-            const matchText = (content) => {
-                //The assignation to td_contents is left here until such time as I can
-                //make a test work against it (instead of just item.title).
-                let td_contents = `${item.title} (${item.id})`
-                // Remove extra spaces and match against the item’s title/id attribute
-                const normalizedContent = content.replace(/\s+/g, ' ').trim();
-                return normalizedContent.includes(item.title);
-            };
-            // Use screen.getByText with the function to verify the presence of each cell
-            expect(screen.getByText(matchText)).toBeInTheDocument();
-        });
+  test("renders table rows based on passed mocked collection (Approach A)", () => {
+    render(<ToDoList
+        data={mockTodoData} 
+        key={mockTodoData.length} 
+        handleDeleteTodo={mockFunctionOne}
+        handleToggleCompletion={mockFunctionTwo}
+        logtestfunction={mockFunctionThree} />);
+    expect(screen.getByText('Test 1 (id=101)')).toBeInTheDocument();
+    expect(screen.getByText('Test 2 (id=102)')).toBeInTheDocument();
+    expect(screen.getByText('Test 3 (id=103)')).toBeInTheDocument();
+  });
+  test("renders table rows based on passed mocked collection (Approach B)", () => {
+    render(<ToDoList
+        data={mockTodoData} 
+        key={mockTodoData.length} 
+        handleDeleteTodo={mockFunctionOne}
+        handleToggleCompletion={mockFunctionTwo}
+        logtestfunction={mockFunctionThree} />);
+    //
+    mockTodoData.forEach((item) => {
+      let td_contents = `${item.title} (id=${item.id})`
+      expect(screen.getByText(td_contents)).toBeInTheDocument();
     });
+  });
 });
-
-
