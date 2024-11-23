@@ -129,17 +129,13 @@ describe('ToDoList', () => {
         logtestfunction={mockFunctionThree} />);
     //
     mockTodoData.forEach((item) => {
-      console.log("AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-      console.log(item.id)
-      console.log("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-      //screen.debug()
-      console.log("CXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-      //const row = screen.getByText(item.id).closest("tr");
       let test_id = `row-${item.id}`
       let td_contents = `${item.title} (id=${item.id})`
+	    // Get the row related to the current 'mockTodoData' element 
       const row = screen.getByTestId(test_id);
+	    // Get a Utility object within methods scoped to the row DOM element 
       const utils = within(row)
-      //let td_contents = `${item.title} (id=${item.id})`
+	    // Look for the 'Task' values expected for the current 'mockTodoData' element 
       expect(screen.getByText(td_contents)).toBeInTheDocument();
     });
   });
