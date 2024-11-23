@@ -15,27 +15,9 @@ waitFor,
 within,
 } from '@testing-library/react';
 
-//Placeholder test suite
-describe('something truthy and falsy', () => {
-    it('true to be true', () => {
-        expect(true).toBe(true);
-    });
-    it('false to be false', () => {
-        expect(false).toBe(false);
-    });
-});
-
-// Test footer
-describe('Footer', () => {
-    it('renders all properties', () => {
-        render(<Footer />);
-        expect(screen.getByText('A Next/Django Demo App.')).toBeInTheDocument();
-        expect(screen.getByText('© 2024 Richard Shea. All rights reserved.')).toBeInTheDocument();
-    });
-});
 // Test Navbar
 describe('Navbar', () => {
-    it('renders all properties', () => {
+    it('displays app title and navigational elements correctly', () => {
         render(<Navbar />);
         expect(screen.getByText('Next/Django Demo')).toBeInTheDocument();
         expect(screen.getByText('Home')).toBeInTheDocument();
@@ -43,9 +25,17 @@ describe('Navbar', () => {
         expect(screen.getByText('About')).toBeInTheDocument();
     });
 });
+// Test footer
+describe('Footer', () => {
+    it('displays app name and copyright correctly', () => {
+        render(<Footer />);
+        expect(screen.getByText('A Next/Django Demo App.')).toBeInTheDocument();
+        expect(screen.getByText('© 2024 Richard Shea. All rights reserved.')).toBeInTheDocument();
+    });
+});
 // Test DeleteIconAndConfirmation
 describe('DeleteIconAndConfirmation', () => {
-    it('renders all properties', () => {
+    it('that the component renders a button', () => {
         render(<DeleteIconAndConfirmation />);
         expect(screen.getByRole('button')).toBeInTheDocument();
     });
@@ -55,7 +45,7 @@ describe('DeleteIconAndConfirmation', () => {
 // this may be useful for guidance on doing that 
 // https://stackoverflow.com/questions/53119123/react-testing-library-test-styles-specifically-background-image
 describe('ToggleCompletedIconAndConfirmation', () => {
-    it('renders all properties', () => {
+    it('that the component renders a button', () => {
         render(<ToggleCompletedIconAndConfirmation />);
         expect(screen.getByRole('button')).toBeInTheDocument();
     });
@@ -96,7 +86,7 @@ const mockFunctionTwo = vi.fn();
 const mockFunctionThree = vi.fn();
 //
 describe('ToDoList', () => {
-  test("renders table rows based on passed mocked collection (Approach A)", () => {
+  test("that the three 'task' descriptions are contained in the output", () => {
     render(<ToDoList
         data={mockTodoData} 
         key={mockTodoData.length} 
@@ -107,7 +97,7 @@ describe('ToDoList', () => {
     expect(screen.getByText('Test 2 (id=102)')).toBeInTheDocument();
     expect(screen.getByText('Test 3 (id=103)')).toBeInTheDocument();
   });
-  test("renders table rows based on passed mocked collection (Approach B)", () => {
+  test("that the three 'task' descriptions are contained in the output (alternative approach)", () => {
     render(<ToDoList
         data={mockTodoData} 
         key={mockTodoData.length} 
@@ -120,7 +110,7 @@ describe('ToDoList', () => {
       expect(screen.getByText(td_contents)).toBeInTheDocument();
     });
   });
-  test("renders table rows based on passed mocked collection (Approach C)", () => {
+  test("that each row of the table has the expected 'task' description", () => {
     render(<ToDoList
         data={mockTodoData} 
         key={mockTodoData.length} 
@@ -140,3 +130,13 @@ describe('ToDoList', () => {
     });
   });
 });
+////Placeholder test suite
+//describe.skip('something truthy and falsy', () => {
+//    it.skip('true to be true', () => {
+//        expect(true).toBe(true);
+//    });
+//    it.skip('false to be false', () => {
+//        expect(false).toBe(false);
+//    });
+//});
+
