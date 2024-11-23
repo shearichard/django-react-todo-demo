@@ -18,7 +18,7 @@ export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleComp
       </thead>
       <tbody>
         {data.map((item) => (
-          <tr key={item.id}>
+          <tr key={item.id} data-testid={`row-${item.id}`}>
             <td>
               <DeleteIconAndConfirmation 
                 handleDeleteTodo={handleDeleteTodo} 

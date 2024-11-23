@@ -12,6 +12,7 @@ render,
 screen,
 fireEvent,
 waitFor,
+within,
 } from '@testing-library/react';
 
 //Placeholder test suite
@@ -116,6 +117,29 @@ describe('ToDoList', () => {
     //
     mockTodoData.forEach((item) => {
       let td_contents = `${item.title} (id=${item.id})`
+      expect(screen.getByText(td_contents)).toBeInTheDocument();
+    });
+  });
+  test("renders table rows based on passed mocked collection (Approach C)", () => {
+    render(<ToDoList
+        data={mockTodoData} 
+        key={mockTodoData.length} 
+        handleDeleteTodo={mockFunctionOne}
+        handleToggleCompletion={mockFunctionTwo}
+        logtestfunction={mockFunctionThree} />);
+    //
+    mockTodoData.forEach((item) => {
+      console.log("AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+      console.log(item.id)
+      console.log("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+      //screen.debug()
+      console.log("CXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+      //const row = screen.getByText(item.id).closest("tr");
+      let test_id = `row-${item.id}`
+      let td_contents = `${item.title} (id=${item.id})`
+      const row = screen.getByTestId(test_id);
+      const utils = within(row)
+      //let td_contents = `${item.title} (id=${item.id})`
       expect(screen.getByText(td_contents)).toBeInTheDocument();
     });
   });
