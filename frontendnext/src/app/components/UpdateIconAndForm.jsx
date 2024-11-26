@@ -38,12 +38,30 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
         };
 
     //
-    const handleSubmit = async (event) => {
+    const HIDE_handleSubmit = async (event) => {
       event.preventDefault();
       let local_todo = todo;
       local_todo.title = form.title
       local_todo.is_completed = form.is_completed
       await updateTodo(todo.id, local_todo);
+      setShow(false);
+      setForm(INITIAL_FORM_STATE);
+    };
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      // Prepare the date with time component
+      let formattedDate = form.should_be_completed_by_date;
+      if (formattedDate) {
+        formattedDate += "T23:59:59.000Z";
+      }
+      //
+      await updateTodo(todo.id, {
+        ...todo,
+        title: form.title,
+        is_completed: form.is_completed,
+        should_be_completed_by_date: formattedDate,
+      });
+      //
       setShow(false);
       setForm(INITIAL_FORM_STATE);
     };
@@ -53,13 +71,24 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
       logtestfunction("handleClose")
     }
     //
-    const handleShow = async () => {
+    const HIDE_handleShow = async () => {
       const fetchedTodo = await fetchTodo(todoid);
       await setTodo(fetchedTodo);
       await setForm(fetchedTodo);
       setShow(true);
       logtestfunction("handleShow")
     }
+    const handleShow = async () => {
+      const fetchedTodo = await fetchTodo(todoid);
+      setTodo(fetchedTodo);
+      setForm({
+        ...fetchedTodo,
+        should_be_completed_by_date: fetchedTodo.should_be_completed_by_date
+          ? fetchedTodo.should_be_completed_by_date.split("T")[0]
+          : "",
+      });
+      setShow(true);
+    };
     //
     return (
       <>
@@ -87,6 +116,7 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
                   ref={titleInputRef}
                 />
               </Form.Group>
+
               <Form.Group controlId="formIsCompleted" className="mt-3">
                 <Form.Check
                   type="checkbox"
@@ -96,6 +126,16 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
                   onChange={handleChange}
                 />
               </Form.Group>
+
+            <Form.Group controlId="formDate" className="mt-3">
+              <Form.Label>Completion Date</Form.Label>
+              <Form.Control
+                type="date"
+                name="should_be_completed_by_date"
+                value={form.should_be_completed_by_date}
+                onChange={handleChange}
+              />
+            </Form.Group>
             </Form>
           </Modal.Body>
           <Modal.Footer>
