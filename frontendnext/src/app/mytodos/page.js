@@ -93,8 +93,13 @@ const Home = () => {
               key={data.length} 
               handleDeleteTodo={handleDeleteTodo} 
               handleToggleCompletion={handleToggleCompletion} 
+              handleUpdateTodo={handleUpdateTodo}
+              handleAddTodo={handleAddTodo}
+              fetchTodo={fetchTodo}
+              updateTodo={updateTodo}
               logtestfunction={logtestfunction}
             />
+            <hr />
             <h3>Add New Item</h3>
             <input
               type="text"
@@ -109,7 +114,7 @@ const Home = () => {
               placeholder="Enter date"
             />
             <button onClick={handleAddTodo}>Add Item</button>
-
+            <hr />
             <h3>Update Item</h3>
             <input
               type="text"
@@ -124,7 +129,7 @@ const Home = () => {
               placeholder="Enter new task"
             />
             <button onClick={handleUpdateTodo}>Update Item</button>
-
+            <hr />
             <h3>Fetch Single Item</h3>
             <input
               type="text"
