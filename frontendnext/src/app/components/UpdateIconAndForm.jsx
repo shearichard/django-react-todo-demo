@@ -38,15 +38,7 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
         };
 
     //
-    const HIDE_handleSubmit = async (event) => {
-      event.preventDefault();
-      let local_todo = todo;
-      local_todo.title = form.title
-      local_todo.is_completed = form.is_completed
-      await updateTodo(todo.id, local_todo);
-      setShow(false);
-      setForm(INITIAL_FORM_STATE);
-    };
+    //TODO deal with local date/time
     const handleSubmit = async (event) => {
       event.preventDefault();
       // Prepare the date with time component
