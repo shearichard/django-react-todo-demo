@@ -7,6 +7,20 @@ import { UpdateIconAndForm } from "./UpdateIconAndForm";
 import { ToggleCompletedIconAndConfirmation } from "./ToggleCompletedIconAndConfirmation";
 //
 export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleCompletion, handleUpdateTodo, handleAddTodo, fetchTodo, updateTodo, logtestfunction }) => {
+  function formatDate(isoDate) {
+      if (!isoDate.trim()) return isoDate; 
+      //
+      const date = new Date(isoDate);
+      //
+      if (isNaN(date)) return isoDate; // Return unmodified value if invalid
+      //
+      return date.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          });
+  }
+  //
   return(
     <table className="table table-responsive table-striped">
       <thead>
@@ -37,7 +51,7 @@ export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleComp
               />
             </td>
             <td>
-              {item.title} (id={item.id})
+              {item.title}
             </td>
             <td>
               <ToggleCompletedIconAndConfirmation 
@@ -48,6 +62,7 @@ export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleComp
               />
             </td>
             <td>
+        {formatDate(item.should_be_completed_by_date)}
             </td>
           </tr>
         ))}
