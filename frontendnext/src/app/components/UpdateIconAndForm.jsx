@@ -30,14 +30,19 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
     }, [show]); 
     //
     const handleChange = (event) => {
-      const { name, value } = event.target;
-      setForm({ ...form, [name]: value });
-    };
+          const { name, value, type, checked } = event.target;
+          setForm({
+                  ...form,
+                  [name]: type === "checkbox" ? checked : value,
+                });
+        };
+
     //
     const handleSubmit = async (event) => {
       event.preventDefault();
       let local_todo = todo;
       local_todo.title = form.title
+      local_todo.is_completed = form.is_completed
       await updateTodo(todo.id, local_todo);
       setShow(false);
       setForm(INITIAL_FORM_STATE);
@@ -80,6 +85,15 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
                   value={ form ? form.title : ""}
                   onChange={handleChange}
                   ref={titleInputRef}
+                />
+              </Form.Group>
+              <Form.Group controlId="formIsCompleted" className="mt-3">
+                <Form.Check
+                  type="checkbox"
+                  label="Completed"
+                  name="is_completed"
+                  checked={form.is_completed}
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Form>
