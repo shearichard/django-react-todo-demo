@@ -86,7 +86,7 @@ const mockFunctionTwo = vi.fn();
 const mockFunctionThree = vi.fn();
 //
 describe('ToDoList', () => {
-  test("that the three 'task' descriptions are contained in the output", () => {
+  test.skip("that the three 'task' descriptions (with embedded id) are contained in the output", () => {
     render(<ToDoList
         data={mockTodoData} 
         key={mockTodoData.length} 
@@ -97,7 +97,18 @@ describe('ToDoList', () => {
     expect(screen.getByText('Test 2 (id=102)')).toBeInTheDocument();
     expect(screen.getByText('Test 3 (id=103)')).toBeInTheDocument();
   });
-  test("that the three 'task' descriptions are contained in the output (alternative approach)", () => {
+  test("that the three 'task' descriptions are contained in the output", () => {
+    render(<ToDoList
+        data={mockTodoData} 
+        key={mockTodoData.length} 
+        handleDeleteTodo={mockFunctionOne}
+        handleToggleCompletion={mockFunctionTwo}
+        logtestfunction={mockFunctionThree} />);
+    expect(screen.getByText('Test 1')).toBeInTheDocument();
+    expect(screen.getByText('Test 2')).toBeInTheDocument();
+    expect(screen.getByText('Test 3')).toBeInTheDocument();
+  });
+  test.skip("that the three 'task' descriptions (with embedded id) are contained in the output (alternative approach)", () => {
     render(<ToDoList
         data={mockTodoData} 
         key={mockTodoData.length} 
@@ -107,6 +118,38 @@ describe('ToDoList', () => {
     //
     mockTodoData.forEach((item) => {
       let td_contents = `${item.title} (id=${item.id})`
+      expect(screen.getByText(td_contents)).toBeInTheDocument();
+    });
+  });
+  test("that the three 'task' descriptions are contained in the output (alternative approach)", () => {
+    render(<ToDoList
+        data={mockTodoData} 
+        key={mockTodoData.length} 
+        handleDeleteTodo={mockFunctionOne}
+        handleToggleCompletion={mockFunctionTwo}
+        logtestfunction={mockFunctionThree} />);
+    //
+    mockTodoData.forEach((item) => {
+      let td_contents = `${item.title}`
+      expect(screen.getByText(td_contents)).toBeInTheDocument();
+    });
+  });
+  test.skip("that each row of the table has the expected 'task' description (with embedded id)", () => {
+    render(<ToDoList
+        data={mockTodoData} 
+        key={mockTodoData.length} 
+        handleDeleteTodo={mockFunctionOne}
+        handleToggleCompletion={mockFunctionTwo}
+        logtestfunction={mockFunctionThree} />);
+    //
+    mockTodoData.forEach((item) => {
+      let test_id = `row-${item.id}`
+      let td_contents = `${item.title} (id=${item.id})`
+	    // Get the row related to the current 'mockTodoData' element 
+      const row = screen.getByTestId(test_id);
+	    // Get a Utility object within methods scoped to the row DOM element 
+      const utils = within(row)
+	    // Look for the 'Task' values expected for the current 'mockTodoData' element 
       expect(screen.getByText(td_contents)).toBeInTheDocument();
     });
   });
@@ -120,7 +163,7 @@ describe('ToDoList', () => {
     //
     mockTodoData.forEach((item) => {
       let test_id = `row-${item.id}`
-      let td_contents = `${item.title} (id=${item.id})`
+      let td_contents = `${item.title}`
 	    // Get the row related to the current 'mockTodoData' element 
       const row = screen.getByTestId(test_id);
 	    // Get a Utility object within methods scoped to the row DOM element 
