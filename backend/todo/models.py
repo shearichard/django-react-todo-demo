@@ -31,7 +31,7 @@ class Todo(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField(blank=True)
     is_completed = models.BooleanField(default=False)
-    should_be_completed_by_date = models.DateField(null=True)
+    should_be_completed_by_date = models.DateField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     category = models.ForeignKey(Category, to_field="title", on_delete=models.PROTECT, default="N/A")
