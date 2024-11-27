@@ -4,9 +4,10 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 //
 import { DeleteIconAndConfirmation } from "./DeleteIconAndConfirmation";
 import { UpdateIconAndForm } from "./UpdateIconAndForm";
+import { AddIconAndForm } from "./AddIconAndForm";
 import { ToggleCompletedIconAndConfirmation } from "./ToggleCompletedIconAndConfirmation";
 //
-export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleCompletion, handleUpdateTodo, handleAddTodo, fetchTodo, updateTodo, logtestfunction }) => {
+export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleCompletion, handleUpdateTodo, handleAddTodo, fetchTodo, updateTodo, addTodo, logtestfunction }) => {
   function formatDate(isoDate) {
       if (!isoDate.trim()) return isoDate; 
       //
@@ -25,7 +26,11 @@ export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleComp
     <table className="table table-responsive table-striped">
       <thead>
         <tr>
-          <th scope="col"></th>
+          <th scope="col">
+            <AddIconAndForm
+              addTodo={addTodo} 
+            />
+          </th>
           <th scope="col"></th>
           <th scope="col">Task</th>
           <th scope="col">Completed ?</th>

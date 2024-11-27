@@ -97,6 +97,7 @@ const Home = () => {
               handleAddTodo={handleAddTodo}
               fetchTodo={fetchTodo}
               updateTodo={updateTodo}
+              addTodo={addTodo}
               logtestfunction={logtestfunction}
             />
             <hr />
@@ -114,21 +115,6 @@ const Home = () => {
               placeholder="Enter date"
             />
             <button onClick={handleAddTodo}>Add Item</button>
-            <hr />
-            <h3>Update Item</h3>
-            <input
-              type="text"
-              value={updateId}
-              onChange={(e) => setUpdateId(e.target.value)}
-              placeholder="Enter ID"
-            />
-            <input
-              type="text"
-              value={updateTask}
-              onChange={(e) => setUpdateTask(e.target.value)}
-              placeholder="Enter new task"
-            />
-            <button onClick={handleUpdateTodo}>Update Item</button>
             <hr />
             <h3>Fetch Single Item</h3>
             <input
