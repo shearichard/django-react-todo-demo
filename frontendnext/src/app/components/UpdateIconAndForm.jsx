@@ -12,6 +12,8 @@ const INITIAL_FORM_STATE = {
          "should_be_completed_by_date": ""
      };
 //
+const SHOULD_BE_COMPLETED_HAS_TIME_COMPONENT = false;
+//
 export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTodo}) => {
     //
     const [show, setShow] = useState(false);
@@ -43,8 +45,11 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
       event.preventDefault();
       // Prepare the date with time component
       let formattedDate = form.should_be_completed_by_date;
-      if (formattedDate) {
-        formattedDate += "T23:59:59.000Z";
+      //
+      if (SHOULD_BE_COMPLETED_HAS_TIME_COMPONENT === true){
+        if (formattedDate) {
+          formattedDate += "T23:59:59.000Z";
+        }
       }
       //
       await updateTodo(todo.id, {
@@ -63,13 +68,6 @@ export const UpdateIconAndForm = ({updateTodo, logtestfunction, todoid, fetchTod
       logtestfunction("handleClose")
     }
     //
-    const HIDE_handleShow = async () => {
-      const fetchedTodo = await fetchTodo(todoid);
-      await setTodo(fetchedTodo);
-      await setForm(fetchedTodo);
-      setShow(true);
-      logtestfunction("handleShow")
-    }
     const handleShow = async () => {
       const fetchedTodo = await fetchTodo(todoid);
       setTodo(fetchedTodo);

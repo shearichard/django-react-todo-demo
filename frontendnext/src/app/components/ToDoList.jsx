@@ -62,7 +62,7 @@ export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleComp
               />
             </td>
             <td>
-        {formatDate(item.should_be_completed_by_date)}
+              {item.should_be_completed_by_date}
             </td>
           </tr>
         ))}
