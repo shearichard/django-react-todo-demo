@@ -100,33 +100,6 @@ const Home = () => {
               addTodo={addTodo}
               logtestfunction={logtestfunction}
             />
-            <hr />
-            <h3>Add New Item</h3>
-            <input
-              type="text"
-              value={newTask}
-              onChange={(e) => setNewTask(e.target.value)}
-              placeholder="Enter task"
-            />
-            <input
-              type="date"
-              value={newDate}
-              onChange={(e) => setNewDate(e.target.value)}
-              placeholder="Enter date"
-            />
-            <button onClick={handleAddTodo}>Add Item</button>
-            <hr />
-            <h3>Fetch Single Item</h3>
-            <input
-              type="text"
-              placeholder="Enter ID to fetch"
-              onBlur={(e) => handleFetchTodo(e.target.value)}
-            />
-            {todo && (
-              <p>
-                Fetched Todo: {todo.title} - {todo.should_be_completed_by_date}
-              </p>
-            )}
         </div>
         {/* Footer */}
         <Footer />
