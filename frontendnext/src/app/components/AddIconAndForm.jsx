@@ -40,28 +40,20 @@ export const AddIconAndForm = ({addTodo}) => {
                   [name]: type === "checkbox" ? checked : value,
                 });
         };
-
     //
     //TODO deal with local date/time
-  //
+    //
     const handleSubmit = async (event) => {
-          console.log('handleSubmit A');
-          const newTodo = { title: '', is_completed: false, should_be_completed_by_date: '' };
-          //
-          try {
-            console.log('handleSubmit B');
-            const result = await addTodo(newTodo);
-            console.log('handleSubmit C');
-            console.log('Todo added successfully:', result);
-            // Proceed with success logic
-          } catch (error) {
-            console.log('handleSubmit D');
-            console.error('Error adding todo:', error.message);
-            console.log('handleSubmit E');
-            // Handle the error (e.g., show a toast or display error message)
-          }
+      const newTodo = { title: '', is_completed: false, should_be_completed_by_date: '' };
+      //
+      try {
+        const result = await addTodo(newTodo);
+        console.log('Todo added successfully:', result);
+      } catch (error) {
+        console.error('Error adding todo:', error.message);
+      }
     }
-
+    //
     const handleSubmit_HIDE_B = async (event) => {
         event.preventDefault();
         const newTodo = { title: '', is_completed: false, should_be_completed_by_date: '' };

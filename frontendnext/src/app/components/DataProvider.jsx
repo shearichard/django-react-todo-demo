@@ -94,40 +94,29 @@ export const DataProvider = ({ children }) => {
         return { success: false, message: error.message };
       }
   }
-	const addTodo = async (newItem) => {
-			const endpoint = `${BACKEND_SCHEME_HOST_PORT}/todo/api/v1/todos/`;
-			console.log("addTodo A");
-			try {
-					const response = await fetch(endpoint, {
-							method: 'POST',
-							headers: {
-									'Content-Type': 'application/json',
-									Accept: 'application/json',
-							},
-							body: JSON.stringify(newItem),
-					});
-					console.log("addTodo B1");
-					console.log(response);
-					console.log("addTodo B2");
-					console.log(response.ok);
-					console.log("addTodo B3");
-					if (!response.ok) {
-							console.log("addTodo C");
-							const errorData = await response.json();
-							console.log("addTodo D");
-							throw new Error(
-									errorData.errors?.map(err => err.detail).join(', ') || 'Unknown error'
-							);
-					}
-
-					console.log("addTodo F");
-					return await response.json();
-			} catch (error) {
-					console.error("addTodo Error Caught:", error.message);
-					// Re-throw the error to propagate it
-					throw error;
-			}
-	};
+  const addTodo = async (newItem) => {
+      const endpoint = `${BACKEND_SCHEME_HOST_PORT}/todo/api/v1/todos/`;
+      try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify(newItem),
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(
+                errorData.errors?.map(err => err.detail).join(', ') || 'Unknown error'
+            );
+        }
+        return await response.json();
+      } catch (error) {
+        console.error("addTodo Error Caught:", error.message);
+        throw error;
+      }
+  };
 
 
   // Delete a to-do item by ID
