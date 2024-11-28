@@ -43,7 +43,40 @@ export const AddIconAndForm = ({addTodo}) => {
 
     //
     //TODO deal with local date/time
+  //
     const handleSubmit = async (event) => {
+          console.log('handleSubmit A');
+          const newTodo = { title: '', is_completed: false, should_be_completed_by_date: '' };
+          //
+          try {
+            console.log('handleSubmit B');
+            const result = await addTodo(newTodo);
+            console.log('handleSubmit C');
+            console.log('Todo added successfully:', result);
+            // Proceed with success logic
+          } catch (error) {
+            console.log('handleSubmit D');
+            console.error('Error adding todo:', error.message);
+            console.log('handleSubmit E');
+            // Handle the error (e.g., show a toast or display error message)
+          }
+    }
+
+    const handleSubmit_HIDE_B = async (event) => {
+        event.preventDefault();
+        const newTodo = { title: '', is_completed: false, should_be_completed_by_date: '' };
+
+        try {
+          const result = await addTodo(newTodo);
+          console.log('Todo added successfully:', result);
+          // Proceed with success logic
+        } catch (error) {
+          console.error('Error adding todo:', error.message);
+          // Handle the error (e.g., show a toast or display error message)
+        }
+    }
+
+    const handleSubmit_HIDE_A = async (event) => {
       event.preventDefault();
       // Prepare the date with time component
       let formattedDate = form.should_be_completed_by_date;
@@ -54,15 +87,20 @@ export const AddIconAndForm = ({addTodo}) => {
         }
       }
       //
-      await addTodo({
-        ...todo,
-        title: form.title,
-        is_completed: form.is_completed,
-        should_be_completed_by_date: formattedDate,
-      });
-      //
-      setShow(false);
-      setForm(INITIAL_FORM_STATE);
+      try {
+        await addTodo({
+          ...todo,
+          title: form.title,
+          is_completed: form.is_completed,
+          should_be_completed_by_date: formattedDate,
+        });
+        //
+        setShow(false);
+        setForm(INITIAL_FORM_STATE);
+      }
+      catch (error) {
+        alert(error);
+      }
     };
     //
     const handleClose = () => {
