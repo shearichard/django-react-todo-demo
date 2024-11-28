@@ -53,6 +53,7 @@ export const ToDoList = ({ data, data_length, handleDeleteTodo, handleToggleComp
                 handleDeleteTodo={handleDeleteTodo} 
                 logtestfunction={logtestfunction} 
                 todoid={item.id} 
+                fetchTodo={fetchTodo}
               />
             </td>
             <td>
