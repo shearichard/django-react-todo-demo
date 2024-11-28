@@ -79,26 +79,8 @@ export const AddIconAndForm = ({addTodo}) => {
       setShow(true);
     };
     //
-              //color: hover ? '#ff0000' : '#00ff00', // Explicit hover colors
     return (
       <>
-        {/*
-        <i
-            className="bi bi-plus-circle"
-            role="button"
-            aria-label="Add"
-            style={{
-              cursor: 'pointer',
-              fontSize: '1.5rem',
-              textShadow: hover ? '0px 4px 8px rgba(0, 0, 0, 0.8)' : 'none', // Darker shadow
-              color: hover ? 'warning' : 'primary', // Explicit hover colors
-              transition: 'all 0.1s ease-in-out', // Smooth transitions
-            }}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-        >
-        </i>
-        */}
         <i
           className="bi bi-plus-circle text-primary "
           role="button"
