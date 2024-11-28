@@ -29,7 +29,7 @@ export const DataProvider = ({ children }) => {
     }
   };
   // Create a new to-do item
-  const addTodo = async (newItem) => {
+  const addTodoHIDE = async (newItem) => {
       const endpoint = `${BACKEND_SCHEME_HOST_PORT}/todo/api/v1/todos/`;
       try {
         const response = await fetch(endpoint, {
@@ -52,6 +52,32 @@ export const DataProvider = ({ children }) => {
         throw error;
       }
   };
+//
+	const addTodo = async (newItem) => {
+			const endpoint = `${BACKEND_SCHEME_HOST_PORT}/todo/api/v1/todos/`;
+			try {
+					const response = await axios.post(endpoint, newItem, {
+							headers: {
+									'Content-Type': 'application/json',
+									Accept: 'application/json',
+							},
+					});
+					return response.data;
+			} catch (error) {
+					if (error.response) {
+							// Handle errors returned by the backend
+							const errorData = error.response.data;
+							const errorMessage =
+									errorData.errors?.map(err => err.detail).join(', ') || 'Unknown error';
+							//console.error("addTodo Error Caught:", errorMessage);
+							throw new Error(errorMessage);
+					} else {
+							// Handle network or other errors
+							//console.error("addTodo Network/Error Caught:", error.message);
+							throw error;
+					}
+			}
+	};
   // Delete a to-do item by ID
   const deleteTodo = async (id) => {
     try {
