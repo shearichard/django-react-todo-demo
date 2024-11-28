@@ -11,13 +11,9 @@ export const DataProvider = ({ children }) => {
   // Fetch all to-do items
   const fetchTodos = async () => {
     //debugger
-    console.log("fetchTodos A");
     try {
       const response = await axios.get(`${BACKEND_SCHEME_HOST_PORT}/todo/api/v1/todos/`);
-      console.log("fetchTodos B");
-      console.log(response.data);
       setData(response.data);
-      console.log("fetchTodos C");
     } catch (error) {
       console.error('Error fetching todos:', error);
     }
@@ -68,31 +64,20 @@ export const DataProvider = ({ children }) => {
   // Update a to-do item by ID (PATCH)
   const updateTodo = async (id, updatedFields) => {
     try {
-      console.log("updateTodo A")
-      console.log(updatedFields)
-      console.log("updateTodo B")
       const response = await axios.patch(`${BACKEND_SCHEME_HOST_PORT}/todo/api/v1/todos/${id}/`, updatedFields, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      console.log("updateTodo C")
-      console.log(response.data)
-      console.log("updateTodo D")
       setData(function(prevData) {
         return prevData.map(function(item) {
           if (item.id === id) {
-            console.log("updateTodo D1")
             return response.data;
           } else {
-            console.log("updateTodo D2")
             return item;
           }
         });
       });
-      console.log("updateTodo E")
-      console.log(data)
-      console.log("updateTodo F")
     } catch (error) {
       console.error('Error updating todo:', error);
     }
