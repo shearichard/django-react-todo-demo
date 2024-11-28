@@ -44,31 +44,6 @@ export const AddIconAndForm = ({addTodo}) => {
     //TODO deal with local date/time
     //
     const handleSubmit = async (event) => {
-      const newTodo = { title: '', is_completed: false, should_be_completed_by_date: '' };
-      //
-      try {
-        const result = await addTodo(newTodo);
-        console.log('Todo added successfully:', result);
-      } catch (error) {
-        console.error('Error adding todo:', error.message);
-      }
-    }
-    //
-    const handleSubmit_HIDE_B = async (event) => {
-        event.preventDefault();
-        const newTodo = { title: '', is_completed: false, should_be_completed_by_date: '' };
-
-        try {
-          const result = await addTodo(newTodo);
-          console.log('Todo added successfully:', result);
-          // Proceed with success logic
-        } catch (error) {
-          console.error('Error adding todo:', error.message);
-          // Handle the error (e.g., show a toast or display error message)
-        }
-    }
-
-    const handleSubmit_HIDE_A = async (event) => {
       event.preventDefault();
       // Prepare the date with time component
       let formattedDate = form.should_be_completed_by_date;
