@@ -2,7 +2,7 @@
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
-import BACKEND_SCHEME_HOST_PORT from "./Constants";
+import { BACKEND_SCHEME_HOST_PORT } from "./Constants";
 import apiClient from "./apiClient";
 
 export const DataContext = createContext();
@@ -33,12 +33,20 @@ export const DataProvider = ({ children }) => {
       return null;
     }
   };
-
-
-
-
-
+  //
   const addTodo = async (newItem) => {
+    const endpoint = `/todo/api/v1/todos/`;
+    //
+    console.log("addTodo A")
+    const response = await apiClient.post(endpoint, newItem, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    });
+    return response.data;
+  };
+  const addTodo_HIDE = async (newItem) => {
       const endpoint = `${BACKEND_SCHEME_HOST_PORT}/todo/api/v1/todos/`;
       try {
           const response = await axios.post(endpoint, newItem, {
