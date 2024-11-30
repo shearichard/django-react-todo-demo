@@ -37,39 +37,16 @@ export const DataProvider = ({ children }) => {
   const addTodo = async (newItem) => {
     const endpoint = `/todo/api/v1/todos/`;
     //
-    console.log("addTodo A")
     const response = await apiClient.post(endpoint, newItem, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
     });
+    // Update the 'data' state with the new object
+    setData((prevData) => [...prevData, response.data]);
+    //
     return response.data;
-  };
-  const addTodo_HIDE = async (newItem) => {
-      const endpoint = `${BACKEND_SCHEME_HOST_PORT}/todo/api/v1/todos/`;
-      try {
-          const response = await axios.post(endpoint, newItem, {
-              headers: {
-                  'Content-Type': 'application/json',
-                  Accept: 'application/json',
-              },
-          });
-          return response.data;
-      } catch (error) {
-          if (error.response) {
-              // Handle errors returned by the backend
-              const errorData = error.response.data;
-              const errorMessage =
-                  errorData.errors?.map(err => err.detail).join(', ') || 'Unknown error';
-              //console.error("addTodo Error Caught:", errorMessage);
-              throw new Error(errorMessage);
-          } else {
-              // Handle network or other errors
-              //console.error("addTodo Network/Error Caught:", error.message);
-              throw error;
-          }
-      }
   };
   // Delete a to-do item by ID
   const deleteTodo = async (id) => {
