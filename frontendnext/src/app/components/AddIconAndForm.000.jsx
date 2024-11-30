@@ -3,8 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 //
 const INITIAL_FORM_STATE = {
          "id": -1,
@@ -27,8 +25,6 @@ export const AddIconAndForm = ({addTodo}) => {
     const [hover, setHover] = useState(false);
     //
     const [errors, setErrors] = useState({});
-    //
-    const [validated, setValidated] = useState(false);
     //
     const titleInputRef = useRef(null);
     //
@@ -63,15 +59,6 @@ export const AddIconAndForm = ({addTodo}) => {
     };
     //
     const handleSubmit = async (event) => {
-      const form = event.currentTarget;
-      if (form.checkValidity() == false) {
-        event.preventDefault();
-        event.stopPropogation();
-      }
-      setValidated(true);
-    }
-
-    const handleSubmit_HIDE = async (event) => {
       event.preventDefault();
       ////////////////////////////////////////////////////////////
       // Prepare the date with time component -  START
@@ -140,48 +127,44 @@ export const AddIconAndForm = ({addTodo}) => {
         </i>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add Todo</Modal.Title>
+            <Modal.Title>Add</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                  <Row className="mb-3">
-                    <Form.Group as={Col} md="12" controlId="title">
-                      <Form.Control
-                        required
-                        type="text"
-                        name="title"
-                        placeholder="Title"
-                        ref={titleInputRef}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        Please provide a title.
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Row>
-                  <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formIsCompleted" className="mt-3">
-                      <Form.Check
-                        type="checkbox"
-                        label="Completed"
-                        name="is_completed"
-                        checked={form.is_completed}
-                        onChange={handleChange}
-                      />
-                    </Form.Group>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="title">
+                <Form.Label>Title:</Form.Label>
+                <Form.Control
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={ form ? form.title : ""}
+                  onChange={handleChange}
+                  ref={titleInputRef}
+                  isInvalid={!!errors.field1}
+                />
+                <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback>
+              </Form.Group>
 
-                  </Row>
-                  <Row className="mb-3">
-                  <Form.Group as={Col} controlId="formDate" className="mt-3">
-                    <Form.Label>Completion Date</Form.Label>
-                    <Form.Control
-                      type="date"
-                      name="should_be_completed_by_date"
-                      value={form.should_be_completed_by_date}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  </Row>
-                </Form>
+              <Form.Group controlId="formIsCompleted" className="mt-3">
+                <Form.Check
+                  type="checkbox"
+                  label="Completed"
+                  name="is_completed"
+                  checked={form.is_completed}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+            <Form.Group controlId="formDate" className="mt-3">
+              <Form.Label>Completion Date</Form.Label>
+              <Form.Control
+                type="date"
+                name="should_be_completed_by_date"
+                value={form.should_be_completed_by_date}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
