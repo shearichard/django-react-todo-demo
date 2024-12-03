@@ -43,18 +43,22 @@ RUNNING_DEVSERVER = (get_env_variable("TODO_ACTIVATE_DEV_TOOLS") == "1")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_variable("TODO_SECRET_KEY")
 
+# Instead of sending emails for the moment just write them out to the file system
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = Path(BASE_DIR, '..','email_produced_in_development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
+#
+SITE_ID = 1
 
 
 # Application definition
@@ -70,6 +74,10 @@ BASE_INSTALLED_APPS = [
     'todo',
     'drf_spectacular',
     'django_guid',
+	'allauth',
+    'allauth.account',
+	'allauth.socialaccount',
+	'allauth.socialaccount.providers.google',
 ]
 DEV_ONLY_INSTALLED_APPS = [
     'django_extensions',
@@ -90,6 +98,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+	"allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -298,3 +307,37 @@ LOGGING = {
 #   - After rotation zip the retained log files
 #logger.add("neo_web_app.log", rotation="23:59", retention="10 days", compression="zip" )
 #logger.add("neo_web_app.log", rotation="23:59", retention="1 day", compression="zip" )
+# Settings specifically for allauth START
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        }
+    }
+}
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'offline',
+        },
+    }
+}
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+
+
+
+
+
+
+# Settings specifically for allauth STOP
