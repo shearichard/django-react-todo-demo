@@ -96,3 +96,9 @@ $ curl -X POST http://localhost:8000/api/v1/todos/ -H "Content-Type: application
 
 NOTE: There is an alternative library which covers similar ground, [drf-problems](https://github.com/shivanshs9/drf-problems/), but when last tested, August 2024, didn't work as expected.
 
+## AllAuth
+The [allauth](https://docs.allauth.org/en/latest/index.html) package is used to provide authentication, registration, account management as well as 3rd party (social) account authentication.
+
+### django-allauth
+To provide a Restful interface to AllAuth the [django-allauth](https://allauth.org/docs/draft-api/) package is used to provide local and OAuth authentication. The API exposed by django-allauth [may be viewed as described here](./backend/doco/django-allauth-openapi-spec/README.md).
+
