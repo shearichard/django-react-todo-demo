@@ -313,15 +313,15 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'APP': {
-            'client_id': '123',
-            'secret': '456',
-            'key': ''
-        }
-    }
-}
+#SOCIALACCOUNT_PROVIDERS = {
+#    'google': {
+#        'APP': {
+#            'client_id': '123',
+#            'secret': '456',
+#            'key': ''
+#        }
+#    }
+#}
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
