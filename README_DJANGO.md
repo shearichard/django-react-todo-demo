@@ -100,7 +100,7 @@ NOTE: There is an alternative library which covers similar ground, [drf-problems
 The [allauth](https://docs.allauth.org/en/latest/index.html) package is used to provide authentication, registration, account management as well as 3rd party (social) account authentication.
 
 ### django-allauth
-Information [here](https://docs.allauth.org/en/latest/headless/installation.html) about using allauth for mobile/SPA applications.
+There is documentation [here](https://docs.allauth.org/en/latest/headless/installation.html) about how to use the API exposed by allauth for mobile/SPA applications.
 
-The interface exposed by AllAuth in 'headless mode' is seen here [django-allauth](https://allauth.org/docs/draft-api/). The API exposed by headless django-allauth can be viewed locally [as described here](./backend/doco/django-allauth-openapi-spec/README.md).
+The schema of that interface is seen here [django-allauth](https://allauth.org/docs/draft-api/). The same material can be viewed locally, and how to do that [is described here](./backend/doco/django-allauth-openapi-spec/README.md).
 
