@@ -97,7 +97,7 @@ $ curl -X POST http://localhost:8000/api/v1/todos/ -H "Content-Type: application
 NOTE: There is an alternative library which covers similar ground, [drf-problems](https://github.com/shivanshs9/drf-problems/), but when last tested, August 2024, didn't work as expected.
 
 ## AllAuth
-The [allauth](https://docs.allauth.org/en/latest/index.html) package is used to provide authentication, registration, account management as well as 3rd party (social) account authentication.
+The [allauth](https://docs.allauth.org/en/latest/index.html) package is used to provide authentication, registration and account management, as well as 3rd party (social) account authentication.
 
 ### django-allauth
 There is documentation [here](https://docs.allauth.org/en/latest/headless/installation.html) about how to use the API exposed by allauth for mobile/SPA applications.
