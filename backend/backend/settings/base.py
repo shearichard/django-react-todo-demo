@@ -77,8 +77,9 @@ BASE_INSTALLED_APPS = [
 	'allauth',
     'allauth.account',
 	'allauth.socialaccount',
-	'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.openid_connect',
 ]
+#'allauth.socialaccount.providers.google',
 DEV_ONLY_INSTALLED_APPS = [
     'django_extensions',
 ]
@@ -322,22 +323,34 @@ AUTHENTICATION_BACKENDS = [
 #        }
 #    }
 #}
+#SOCIALACCOUNT_PROVIDERS = {
+#    'google': {
+#        'SCOPE': [
+#            'profile',
+#            'email',
+#        ],
+#        'AUTH_PARAMS': {
+#            'access_type': 'offline',
+#        },
+#    }
+OSM_CLIENT_ID = get_env_variable("OPENSTREETMAP_CLIENT_ID")
+OSM_SECRET = get_env_variable("OPENSTREETMAP_CLIENT_SECRET")
+#
 SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'offline',
-        },
-    }
+  "openid_connect": {
+      "APPS": [
+          {
+              "provider_id": "openstreetmap",
+              "name": "OpenStreetMap",
+              "client_id": OSM_CLIENT_ID, 
+              "secret": OSM_SECRET,
+              "settings": {
+                  "server_url": "https://www.openstreetmap.org/.well-known/oauth-authorization-server",
+                  "scope": ["openid", "read_prefs"],
+              },
+          },
+      ]
+  },
 }
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
-
-
-
-
-
-
 # Settings specifically for allauth STOP
