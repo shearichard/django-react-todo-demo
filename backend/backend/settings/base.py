@@ -297,10 +297,7 @@ LOGGING = {
         },
     },
 }
-
-
 # Settings related to dj_loguru STOP
-
 #load_loguru(globals(), logging_config=generate_logging_config(loglevel='INFO'))
  
 #   - Rotate daily at 23:59UTC. 
@@ -308,6 +305,7 @@ LOGGING = {
 #   - After rotation zip the retained log files
 #logger.add("neo_web_app.log", rotation="23:59", retention="10 days", compression="zip" )
 #logger.add("neo_web_app.log", rotation="23:59", retention="1 day", compression="zip" )
+#
 # Settings specifically for allauth START
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -333,17 +331,14 @@ AUTHENTICATION_BACKENDS = [
 #            'access_type': 'offline',
 #        },
 #    }
-OSM_CLIENT_ID = get_env_variable("OPENSTREETMAP_CLIENT_ID")
-OSM_SECRET = get_env_variable("OPENSTREETMAP_CLIENT_SECRET")
-#
 SOCIALACCOUNT_PROVIDERS = {
   "openid_connect": {
       "APPS": [
           {
               "provider_id": "openstreetmap",
               "name": "OpenStreetMap",
-              "client_id": OSM_CLIENT_ID, 
-              "secret": OSM_SECRET,
+              "client_id": get_env_variable("OPENSTREETMAP_CLIENT_ID"), 
+              "secret": get_env_variable("OPENSTREETMAP_CLIENT_SECRET"),
               "settings": {
                   "server_url": "https://www.openstreetmap.org/.well-known/oauth-authorization-server",
                   "scope": ["openid", "read_prefs"],
