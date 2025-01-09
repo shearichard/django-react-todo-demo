@@ -104,3 +104,5 @@ There is documentation [here](https://docs.allauth.org/en/latest/headless/instal
 
 The schema of that interface is seen here [django-allauth](https://allauth.org/docs/draft-api/). The same material can be viewed locally, and how to do that [is described here](./backend/doco/django-allauth-openapi-spec/README.md).
 
+This example project provided by allauth covers similar ground as this project and may be useful for reference https://github.com/pennersr/django-allauth/tree/main/examples/react-spa, note in particular the use of the HEADLESS_ONLY setting to suppress the allauth views in situations where they are not needed. 
+
