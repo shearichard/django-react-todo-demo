@@ -74,9 +74,9 @@ BASE_INSTALLED_APPS = [
     'todo',
     'drf_spectacular',
     'django_guid',
-	'allauth',
+    'allauth',
     'allauth.account',
-	'allauth.socialaccount',
+    'allauth.socialaccount',
     'allauth.socialaccount.providers.openid_connect',
 ]
 #'allauth.socialaccount.providers.google',
@@ -99,7 +99,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-	"allauth.account.middleware.AccountMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -196,7 +196,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
     ],
-	"EXCEPTION_HANDLER": "drf_standardized_errors.handler.exception_handler",
+    "EXCEPTION_HANDLER": "drf_standardized_errors.handler.exception_handler",
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 # Settings related to drf-spectacular START
