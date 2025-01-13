@@ -37,6 +37,9 @@ If you wish to regenerate the Django secret key that can be done as follows.
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
 
+## Use of Django Allauth
+Authentication makes use of the Django allauth package, more details can be found [here](./backend/doco/django-allauth-openapi-spec/README.md).
+
 ## Schema - OpenAPI/Swagger
 ### Update Schema Definition
 ```
