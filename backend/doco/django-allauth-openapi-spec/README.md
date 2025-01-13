@@ -8,7 +8,7 @@ By making use of the HEADLESS_ONLY, the following views are suppressed
 | --- | --- |
 | git status | List all new or modified files |
 | git diff | Show file differences that haven't been staged |
-```
+
 | Path | View | Name |
 | --- | --- | --- |
 | /accounts/3rdparty/ |  allauth.socialaccount.views.ConnectionsView     ||
@@ -34,17 +34,14 @@ By making use of the HEADLESS_ONLY, the following views are suppressed
 | /accounts/social/login/cancelled/ |     django.views.generic.base.RedirectView ||
 | /accounts/social/login/error/ | django.views.generic.base.RedirectView || 
 | /accounts/social/signup/ |      django.views.generic.base.RedirectView ||
-```
 
 While the following end points are left in place
 
-```
 | Path | View | Name |
 | --- | --- | --- |
 | /accounts/oidc/<provider_id>/login/ |	allauth.socialaccount.providers.openid_connect.views.login	| openid_connect_login |
 | /accounts/oidc/<provider_id>/login/callback/	| allauth.socialaccount.providers.openid_connect.views.callback	| openid_connect_callback |
 | /accounts/profile/	| backend.urls.<lambda> |
-```
 
 
 
