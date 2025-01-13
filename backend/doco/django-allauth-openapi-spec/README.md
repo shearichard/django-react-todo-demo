@@ -3,11 +3,17 @@
 Allauth has provision for exposing functionality via a set of API endpoints, [that is documented here](https://docs.allauth.org/en/latest/headless/index.html).
 
 ## Usage for SPA/Mobile clients
-By making use of the HEADLESS_ONLY, the following views are suppressed
-| Command | Description |
-| --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
+By making use of the HEADLESS_ONLY the following end points are left in place
+
+| Path | View | Name |
+| --- | --- | --- |
+| **/accounts/oidc/<provider_id>/login/** |	allauth.socialaccount.providers.openid_connect.views.login	| openid_connect_login |
+| /accounts/oidc/<provider_id>/login/callback/	| allauth.socialaccount.providers.openid_connect.views.callback	| openid_connect_callback |
+| /accounts/profile/	| backend.urls.<lambda> |
+
+while the following views are suppressed.
+
+
 
 | Path | View | Name |
 | --- | --- | --- |
@@ -34,15 +40,6 @@ By making use of the HEADLESS_ONLY, the following views are suppressed
 | /accounts/social/login/cancelled/ |     django.views.generic.base.RedirectView ||
 | /accounts/social/login/error/ | django.views.generic.base.RedirectView || 
 | /accounts/social/signup/ |      django.views.generic.base.RedirectView ||
-
-While the following end points are left in place
-
-| Path | View | Name |
-| --- | --- | --- |
-| /accounts/oidc/<provider_id>/login/ |	allauth.socialaccount.providers.openid_connect.views.login	| openid_connect_login |
-| /accounts/oidc/<provider_id>/login/callback/	| allauth.socialaccount.providers.openid_connect.views.callback	| openid_connect_callback |
-| /accounts/profile/	| backend.urls.<lambda> |
-
 
 
 ## OpenAPI Specification
