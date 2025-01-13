@@ -3,7 +3,7 @@
 Allauth has provision for exposing functionality via a set of API endpoints, [that is documented here](https://docs.allauth.org/en/latest/headless/index.html).
 
 ## Usage for SPA/Mobile clients
-By making use of the HEADLESS_ONLY the following end points are left in place
+By setting **HEADLESS_ONLY** to _True_ only the following end points are left in place
 
 | Path | View | Name |
 | --- | --- | --- |
@@ -12,8 +12,6 @@ By making use of the HEADLESS_ONLY the following end points are left in place
 | _/accounts/profile/_	| backend.urls.<lambda>_ ||
 
 while the following views are suppressed.
-
-
 
 | Path | View | Name |
 | --- | --- | --- |
