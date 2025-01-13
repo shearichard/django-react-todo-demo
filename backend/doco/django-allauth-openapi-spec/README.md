@@ -8,8 +8,8 @@ By making use of the HEADLESS_ONLY the following end points are left in place
 | Path | View | Name |
 | --- | --- | --- |
 | _/accounts/oidc/<provider_id>/login/_ |	allauth.socialaccount.providers.openid_connect.views.login	| openid_connect_login |
-| /accounts/oidc/<provider_id>/login/callback/	| allauth.socialaccount.providers.openid_connect.views.callback	| openid_connect_callback |
-| /accounts/profile/	| backend.urls.<lambda> |
+| _/accounts/oidc/<provider_id>/login/callback/_	| allauth.socialaccount.providers.openid_connect.views.callback	| openid_connect_callback |
+| _/accounts/profile/	| backend.urls.<lambda>_ |
 
 while the following views are suppressed.
 
@@ -17,29 +17,29 @@ while the following views are suppressed.
 
 | Path | View | Name |
 | --- | --- | --- |
-| /accounts/3rdparty/ |  allauth.socialaccount.views.ConnectionsView     ||
-| /accounts/3rdparty/login/cancelled/ |  allauth.socialaccount.views.LoginCancelledView  ||
-| /accounts/3rdparty/login/error/ |      allauth.socialaccount.views.LoginErrorView      ||
-| /accounts/3rdparty/signup/ |   allauth.socialaccount.views.SignupView  || 
-| /accounts/confirm-email/ |      allauth.account.views.email_verification_sent |  account_email_verification_sent |
-| /accounts/confirm-email/<key>/ |        allauth.account.views.ConfirmEmailView |  account_confirm_email |
-| /accounts/email/ |      allauth.account.views.EmailView | account_email |
-| /accounts/inactive/ |   allauth.account.views.AccountInactiveView |       account_inactive |
-| /accounts/login/ |      allauth.account.views.LoginView | account_login |
-| /accounts/login/code/confirm/ | allauth.account.views.ConfirmLoginCodeView |     account_confirm_login_code |
-| /accounts/logout/ |     allauth.account.views.LogoutView      |  account_logout |
-| /accounts/password/change/ |    allauth.account.views.PasswordChangeView    |    account_change_password |
-| /accounts/password/reset/ |     allauth.account.views.PasswordResetView | account_reset_password |
-| /accounts/password/reset/done/ |        allauth.account.views.PasswordResetDoneView  |   account_reset_password_done |
-| /accounts/password/reset/key/<uidb36>-<key>/ |  allauth.account.views.PasswordResetFromKeyView |  account_reset_password_from_key |
-| /accounts/password/reset/key/done/ |    allauth.account.views.PasswordResetFromKeyDoneView     |  account_reset_password_from_key_done |
-| /accounts/password/set/ |       allauth.account.views.PasswordSetView   | account_set_password |
-| /accounts/reauthenticate/ |     allauth.account.views.ReauthenticateView  |       account_reauthenticate |
-| /accounts/signup/ |     allauth.account.views.SignupView        | account_signup |
-| /accounts/social/connections/ | django.views.generic.base.RedirectView ||
-| /accounts/social/login/cancelled/ |     django.views.generic.base.RedirectView ||
-| /accounts/social/login/error/ | django.views.generic.base.RedirectView || 
-| /accounts/social/signup/ |      django.views.generic.base.RedirectView ||
+| _/accounts/3rdparty/_ |  allauth.socialaccount.views.ConnectionsView     ||
+| _/accounts/3rdparty/login/cancelled/_ |  allauth.socialaccount.views.LoginCancelledView  ||
+| _/accounts/3rdparty/login/error/_ |      allauth.socialaccount.views.LoginErrorView      ||
+| _/accounts/3rdparty/signup/_ |   allauth.socialaccount.views.SignupView  || 
+| _/accounts/confirm-email/_ |      allauth.account.views.email_verification_sent |  account_email_verification_sent |
+| _/accounts/confirm-email/<key>_/ |        allauth.account.views.ConfirmEmailView |  account_confirm_email |
+| _/accounts/email/_ |      allauth.account.views.EmailView | account_email |
+| _/accounts/inactive/_ |   allauth.account.views.AccountInactiveView |       account_inactive |
+| _/accounts/login/_ |      allauth.account.views.LoginView | account_login |
+| _/accounts/login/code/confirm/_ | allauth.account.views.ConfirmLoginCodeView |     account_confirm_login_code |
+| _/accounts/logout/_ |     allauth.account.views.LogoutView      |  account_logout |
+| _/accounts/password/change/_ |    allauth.account.views.PasswordChangeView    |    account_change_password |
+| _/accounts/password/reset/_ |     allauth.account.views.PasswordResetView | account_reset_password |
+| _/accounts/password/reset/done/_ |        allauth.account.views.PasswordResetDoneView  |   account_reset_password_done |
+| _/accounts/password/reset/key/<uidb36>-<key>_/ |  allauth.account.views.PasswordResetFromKeyView |  account_reset_password_from_key |
+| _/accounts/password/reset/key/done/_ |    allauth.account.views.PasswordResetFromKeyDoneView     |  account_reset_password_from_key_done |
+| _/accounts/password/set/_ |       allauth.account.views.PasswordSetView   | account_set_password |
+| _/accounts/reauthenticate/_ |     allauth.account.views.ReauthenticateView  |       account_reauthenticate |
+| _/accounts/signup/_ |     allauth.account.views.SignupView        | account_signup |
+| _/accounts/social/connections/_ | django.views.generic.base.RedirectView ||
+| _/accounts/social/login/cancelled/_ |     django.views.generic.base.RedirectView ||
+| _/accounts/social/login/error/_ | django.views.generic.base.RedirectView || 
+| _/accounts/social/signup/_ |      django.views.generic.base.RedirectView ||
 
 
 ## OpenAPI Specification
