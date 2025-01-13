@@ -7,7 +7,7 @@ By making use of the HEADLESS_ONLY the following end points are left in place
 
 | Path | View | Name |
 | --- | --- | --- |
-| **/accounts/oidc/<provider_id>/login/** |	allauth.socialaccount.providers.openid_connect.views.login	| openid_connect_login |
+| _/accounts/oidc/<provider_id>/login/_ |	allauth.socialaccount.providers.openid_connect.views.login	| openid_connect_login |
 | /accounts/oidc/<provider_id>/login/callback/	| allauth.socialaccount.providers.openid_connect.views.callback	| openid_connect_callback |
 | /accounts/profile/	| backend.urls.<lambda> |
 
