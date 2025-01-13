@@ -60,6 +60,27 @@ ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
 #
 SITE_ID = 1
 
+#
+# Configure allauth so that it is suitable only for SPA/Mobile
+# apps and so that views which are used only by conventional
+# projects are suppressed. 
+#
+# More details here https://docs.allauth.org/en/latest/headless/introduction.html
+#
+HEADLESS_ONLY = True
+
+# HEADLESS_FRONTEND_URLS define where email confirmation and password reset mails 
+# should link to if you do not wish them to be link to the allauth.account views
+# but instead to a URL within the frontend app.
+#
+# https://docs.allauth.org/en/latest/headless/configuration.html
+HEADLESS_FRONTEND_URLS = {
+    "account_confirm_email": "/account/verify-email/{key}",
+    "account_reset_password": "/account/password/reset",
+    "account_reset_password_from_key": "/account/password/reset/key/{key}",
+    "account_signup": "/account/signup",
+    "socialaccount_login_error": "/account/provider/callback",
+}
 
 # Application definition
 BASE_INSTALLED_APPS = [
