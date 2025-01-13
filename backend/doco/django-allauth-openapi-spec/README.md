@@ -9,7 +9,7 @@ By making use of the HEADLESS_ONLY the following end points are left in place
 | --- | --- | --- |
 | _/accounts/oidc/<provider_id>/login/_ |	allauth.socialaccount.providers.openid_connect.views.login	| openid_connect_login |
 | _/accounts/oidc/<provider_id>/login/callback/_	| allauth.socialaccount.providers.openid_connect.views.callback	| openid_connect_callback |
-| _/accounts/profile/	| backend.urls.<lambda>_ |
+| _/accounts/profile/_	| backend.urls.<lambda>_ ||
 
 while the following views are suppressed.
 
