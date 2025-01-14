@@ -16,6 +16,9 @@ export default function Navbar() {
 		                        <li className="nav-item me-3">
 		                            <a className="nav-link" href="/about">About</a>
 		                        </li>
+		                        <li className="nav-item me-3">
+		                            <a className="nav-link" href="/authdiagnostics">Authentication</a>
+		                        </li>
 		                    </ul>
 		                </div>
 		            </nav>
