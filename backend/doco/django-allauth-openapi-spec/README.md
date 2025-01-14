@@ -51,3 +51,9 @@ docker compose up
 
 After which the Swagger output will be visible at http://localhost:5000 .
 
+## Representative interactions 
+
+To do anything other than generate a 401 the following request would require authentication.
+```
+http 'http://127.0.0.1:8000/_allauth/app/v1/auth/session'
+```
