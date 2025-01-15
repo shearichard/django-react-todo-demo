@@ -53,7 +53,46 @@ After which the Swagger output will be visible at http://localhost:5000 .
 
 ## Representative interactions 
 
+### Session
+
 To do anything other than generate a 401 the following request would require authentication.
 ```
 http 'http://127.0.0.1:8000/_allauth/app/v1/auth/session'
+
 ```
+
+### Config
+
+```
+$ http 'http://localhost:8000/_allauth/app/v1/config'
+HTTP/1.1 200 OK
+Access-Control-Expose-Headers: Correlation-ID
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate, private
+Content-Length: 216
+Content-Type: application/json
+Correlation-ID: 3e53c3cb224044f183db2bd4c7d79779
+Cross-Origin-Opener-Policy: same-origin
+Date: Wed, 15 Jan 2025 22:01:20 GMT
+Expires: Wed, 15 Jan 2025 22:01:20 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.10.12
+Vary: origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "data": {
+        "account": {
+            "authentication_method": "username",
+            "email_verification_by_code_enabled": false,
+            "is_open_for_signup": true,
+            "login_by_code_enabled": false
+        },
+        "socialaccount": {
+            "providers": []
+        }
+    },
+    "status": 200
+}
+```
+
