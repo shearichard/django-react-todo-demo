@@ -37,6 +37,9 @@ If you wish to regenerate the Django secret key that can be done as follows.
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
 
+## Use of Django Allauth
+Authentication makes use of the Django allauth package, more details can be found [here](./backend/doco/django-allauth-openapi-spec/README.md).
+
 ## Schema - OpenAPI/Swagger
 ### Update Schema Definition
 ```
@@ -95,4 +98,14 @@ $ curl -X POST http://localhost:8000/api/v1/todos/ -H "Content-Type: application
 ```
 
 NOTE: There is an alternative library which covers similar ground, [drf-problems](https://github.com/shivanshs9/drf-problems/), but when last tested, August 2024, didn't work as expected.
+
+## AllAuth
+The [allauth](https://docs.allauth.org/en/latest/index.html) package is used to provide authentication, registration and account management, as well as 3rd party (social) account authentication.
+
+### django-allauth
+There is documentation [here](https://docs.allauth.org/en/latest/headless/installation.html) about how to use the API exposed by allauth for mobile/SPA applications.
+
+The schema of that interface is seen here [django-allauth](https://allauth.org/docs/draft-api/). The same material can be viewed locally, and how to do that [is described here](./backend/doco/django-allauth-openapi-spec/README.md).
+
+This example project provided by allauth covers similar ground as this project and may be useful for reference https://github.com/pennersr/django-allauth/tree/main/examples/react-spa, note in particular the use of the HEADLESS_ONLY setting to suppress the allauth views in situations where they are not needed. 
 
