@@ -68,6 +68,7 @@ BASE_INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     'todo',
+    'users',
     'drf_spectacular',
     'django_guid',
 ]
@@ -178,6 +179,10 @@ CORS_ORIGIN_WHITELIST = ("http://localhost:3000",)
 #
 # DEFAULT_AUTO_FIELD = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model
+AUTH_USER_MODEL = "users.CustomUser"
+
 ########################################################################
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
