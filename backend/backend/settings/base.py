@@ -71,6 +71,10 @@ BASE_INSTALLED_APPS = [
     'users',
     'drf_spectacular',
     'django_guid',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.openid_connect',
 ]
 DEV_ONLY_INSTALLED_APPS = [
     'django_extensions',
@@ -91,6 +95,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -106,6 +111,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
         },
     },
@@ -303,3 +309,46 @@ LOGGING = {
 #   - After rotation zip the retained log files
 #logger.add("neo_web_app.log", rotation="23:59", retention="10 days", compression="zip" )
 #logger.add("neo_web_app.log", rotation="23:59", retention="1 day", compression="zip" )
+# Settings specifically for allauth START
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+#SOCIALACCOUNT_PROVIDERS = {
+#    'google': {
+#        'APP': {
+#            'client_id': '123',
+#            'secret': '456',
+#            'key': ''
+#        }
+#    }
+#}
+#SOCIALACCOUNT_PROVIDERS = {
+#    'google': {
+#        'SCOPE': [
+#            'profile',
+#            'email',
+#        ],
+#        'AUTH_PARAMS': {
+#            'access_type': 'offline',
+#        },
+#    }
+SOCIALACCOUNT_PROVIDERS = {
+  "openid_connect": {
+      "APPS": [
+          {
+              "provider_id": "openstreetmap",
+              "name": "OpenStreetMap",
+              "client_id": get_env_variable("OPENSTREETMAP_CLIENT_ID"), 
+              "secret": get_env_variable("OPENSTREETMAP_CLIENT_SECRET"),
+              "settings": {
+                  "server_url": "https://www.openstreetmap.org/.well-known/oauth-authorization-server",
+                  "scope": ["openid", "read_prefs"],
+              },
+          },
+      ]
+  },
+}
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+# Settings specifically for allauth STOP
