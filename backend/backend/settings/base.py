@@ -94,16 +94,18 @@ BASE_INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.sites',
+    # Third-party
     "corsheaders",
     "rest_framework",
-    'todo',
-    'users',
     'drf_spectacular',
     'django_guid',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.openid_connect',
+    # Local
+    'todo',
+    'users',
 ]
 #'allauth.socialaccount.providers.google',
 DEV_ONLY_INSTALLED_APPS = [
