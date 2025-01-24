@@ -12,6 +12,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', lambda request: HttpResponse("Profile page placeholder - Temporary page until other infrastructure completed")),
     path("_allauth/", include("allauth.headless.urls")),
+]
 '''
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),  # OpenAPI schema
     path('api/docs/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),  # Swagger UI
