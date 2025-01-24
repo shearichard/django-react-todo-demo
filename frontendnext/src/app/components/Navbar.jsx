@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "../page.module.css";
 export default function Navbar() {
 	    return (
@@ -13,6 +15,9 @@ export default function Navbar() {
 		                        </li>
 		                        <li className="nav-item me-3">
 		                            <a className="nav-link" href="/about">About</a>
+		                        </li>
+		                        <li className="nav-item me-3">
+		                            <a className="nav-link" href="/authdiagnostics">Authentication</a>
 		                        </li>
 		                    </ul>
 		                </div>
