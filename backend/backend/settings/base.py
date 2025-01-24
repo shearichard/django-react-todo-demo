@@ -50,12 +50,41 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_variable("TODO_SECRET_KEY")
 
+# Instead of sending emails for the moment just write them out to the file system
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = Path(BASE_DIR, '..','email_produced_in_development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
+#
+# django-allauth config
+# https://docs.djangoproject.com/en/dev/ref/settings/#site-id
+SITE_ID = 1
 
+
+#
+# Configure allauth so that it is suitable only for SPA/Mobile
+# apps and so that views which are used only by conventional
+# projects are suppressed. 
+#
+# More details here https://docs.allauth.org/en/latest/headless/introduction.html
+#
+HEADLESS_ONLY = True
+
+# HEADLESS_FRONTEND_URLS define where email confirmation and password reset mails 
+# should link to if you do not wish them to be link to the allauth.account views
+# but instead to a URL within the frontend app.
+#
+# https://docs.allauth.org/en/latest/headless/configuration.html
+HEADLESS_FRONTEND_URLS = {
+    "account_confirm_email": "/account/verify-email/{key}",
+    "account_reset_password": "/account/password/reset",
+    "account_reset_password_from_key": "/account/password/reset/key/{key}",
+    "account_signup": "/account/signup",
+    "socialaccount_login_error": "/account/provider/callback",
+}
 
 # Application definition
 BASE_INSTALLED_APPS = [
@@ -190,9 +219,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model
 AUTH_USER_MODEL = "users.CustomUser"
 
-# django-allauth config
-# https://docs.djangoproject.com/en/dev/ref/settings/#site-id
-SITE_ID = 1
 
 ########################################################################
 REST_FRAMEWORK = {
@@ -202,8 +228,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
     ],
-	"EXCEPTION_HANDLER": "drf_standardized_errors.handler.exception_handler",
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    "EXCEPTION_HANDLER": "drf_standardized_errors.handler.exception_handler",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 # Settings related to drf-spectacular START
 SPECTACULAR_SETTINGS = {
@@ -308,12 +334,13 @@ LOGGING = {
 # Settings related to dj_loguru STOP
 
 #load_loguru(globals(), logging_config=generate_logging_config(loglevel='INFO'))
- 
+
 #   - Rotate daily at 23:59UTC. 
 #   - Retain ten copies of old logs before discarding.
 #   - After rotation zip the retained log files
 #logger.add("neo_web_app.log", rotation="23:59", retention="10 days", compression="zip" )
 #logger.add("neo_web_app.log", rotation="23:59", retention="1 day", compression="zip" )
+#
 # Settings specifically for allauth START
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
