@@ -9,6 +9,7 @@ urlpatterns = [
     path('todo/', include('todo.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', lambda request: HttpResponse("Profile page placeholder - Temporary page until other infrastructure completed")),
+    path("_allauth/", include("allauth.headless.urls")),
 ]
 '''
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),  # OpenAPI schema
