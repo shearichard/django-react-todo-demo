@@ -58,7 +58,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
 #
+# django-allauth config
+# https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
+
 
 #
 # Configure allauth so that it is suitable only for SPA/Mobile
@@ -90,9 +93,11 @@ BASE_INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites',
     "corsheaders",
     "rest_framework",
     'todo',
+    'users',
     'drf_spectacular',
     'django_guid',
     'allauth',
@@ -136,6 +141,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
         },
     },
@@ -209,6 +215,11 @@ CORS_ORIGIN_WHITELIST = ("http://localhost:3000",)
 #
 # DEFAULT_AUTO_FIELD = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model
+AUTH_USER_MODEL = "users.CustomUser"
+
+
 ########################################################################
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
@@ -218,7 +229,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ],
     "EXCEPTION_HANDLER": "drf_standardized_errors.handler.exception_handler",
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 # Settings related to drf-spectacular START
 SPECTACULAR_SETTINGS = {
@@ -320,7 +331,7 @@ LOGGING = {
 }
 # Settings related to dj_loguru STOP
 #load_loguru(globals(), logging_config=generate_logging_config(loglevel='INFO'))
- 
+
 #   - Rotate daily at 23:59UTC. 
 #   - Retain ten copies of old logs before discarding.
 #   - After rotation zip the retained log files
