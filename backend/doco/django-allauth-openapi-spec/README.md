@@ -2,6 +2,8 @@
 ## Summary
 Allauth has provision for exposing functionality via a set of API endpoints, [that is documented here](https://docs.allauth.org/en/latest/headless/index.html).
 
+And the corresponding OpenAPI specification can be seen [here](https://docs.allauth.org/en/dev/headless/openapi-specification/).
+
 ## Usage for SPA/Mobile clients
 By setting **HEADLESS_ONLY** to _True_ only the following end points are left in place
 
