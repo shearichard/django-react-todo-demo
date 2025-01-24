@@ -43,7 +43,6 @@ RUNNING_DEVSERVER = (get_env_variable("TODO_ACTIVATE_DEV_TOOLS") == "1")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -106,6 +105,7 @@ BASE_INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.openid_connect',
 ]
+#'allauth.socialaccount.providers.google',
 DEV_ONLY_INSTALLED_APPS = [
     'django_extensions',
 ]
@@ -329,10 +329,7 @@ LOGGING = {
         },
     },
 }
-
-
 # Settings related to dj_loguru STOP
-
 #load_loguru(globals(), logging_config=generate_logging_config(loglevel='INFO'))
 
 #   - Rotate daily at 23:59UTC. 
