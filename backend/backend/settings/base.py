@@ -65,6 +65,7 @@ BASE_INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites',
     "corsheaders",
     "rest_framework",
     'todo',
@@ -188,6 +189,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model
 AUTH_USER_MODEL = "users.CustomUser"
+
+# django-allauth config
+# https://docs.djangoproject.com/en/dev/ref/settings/#site-id
+SITE_ID = 1
 
 ########################################################################
 REST_FRAMEWORK = {
