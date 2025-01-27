@@ -93,7 +93,8 @@ BASE_INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django.contrib.sites',
+    "django.contrib.sites",
+    "django.contrib.humanize",
     # Third-party
     "corsheaders",
     "rest_framework",
@@ -103,6 +104,8 @@ BASE_INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.openid_connect',
+    "allauth.headless",
+    "allauth.usersessions",
     # Local
     'todo',
     'users',
@@ -128,6 +131,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "allauth.usersessions.middleware.UserSessionsMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -381,4 +385,13 @@ SOCIALACCOUNT_PROVIDERS = {
   },
 }
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+
+# USERSESSIONS_TRACK_ACTIVITY
+# Whether or not user sessions are kept updated. User sessions are 
+# created at login time, but as the user continues to access the site 
+# the IP address might change. Enabling this setting makes sure that 
+# the session is kept track of, meaning, the IP address, user agent and 
+# last seen timestamp are all kept up to date.
+USERSESSIONS_TRACK_ACTIVITY = True
+#
 # Settings specifically for allauth STOP
