@@ -104,6 +104,7 @@ BASE_INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.openid_connect',
+    'allauth.socialaccount.providers.google',
     "allauth.headless",
     "allauth.usersessions",
     # Local
@@ -368,8 +369,23 @@ AUTHENTICATION_BACKENDS = [
 #            'access_type': 'offline',
 #        },
 #    }
+
+
+
 SOCIALACCOUNT_PROVIDERS = {
-  "openid_connect": {
+	"google": {
+		# For each OAuth based provider, either add a ``SocialApp``
+		# (``socialaccount`` app) containing the required client
+		# credentials, or list them here:
+		"APPS": [
+			{
+				"client_id": get_env_variable("GOOGLE_CLIENT_ID"), 
+				"secret": get_env_variable("GOOGLE_CLIENT_SECRET"),
+				"key": "",
+            },
+		]
+    },
+	"openid_connect": {
       "APPS": [
           {
               "provider_id": "openstreetmap",
@@ -379,10 +395,10 @@ SOCIALACCOUNT_PROVIDERS = {
               "settings": {
                   "server_url": "https://www.openstreetmap.org/.well-known/oauth-authorization-server",
                   "scope": ["openid", "read_prefs"],
-              },
-          },
-      ]
-  },
+				},
+			},
+		]
+	},
 }
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 
