@@ -19,10 +19,6 @@ export default function Home() {
                         This is a 'todo' app to demonstrate how Next and Django can work together. 
                     </p>
                     <p>
-                        <h2>Env Vars Test</h2>
-                        <p>Placeholder value derived from Env Vars : {process.env.GOOGLE_CLIENT_ID}</p>
-                    </p>
-                    <p>
                         See the project at <a href="https://github.com/shearichard/django-react-todo-demo">django-react-todo-demo</a>.
                     </p>
                 </div>
