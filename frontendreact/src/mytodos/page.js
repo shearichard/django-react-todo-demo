@@ -29,7 +29,7 @@ const EditIcon = () => {
   )
 }
 //
-const Home = () => {
+const MyToDos = () => {
 
   const [data, fetchTodos, addTodo, deleteTodo, updateTodo, fetchTodo] = useContext(DataContext);
   const [newTask, setNewTask] = useState('');
@@ -104,5 +104,5 @@ const Home = () => {
       </div>
   );
 };
-export default Home;
+export default MyToDos;
 

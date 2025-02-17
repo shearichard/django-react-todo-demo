@@ -1,8 +1,30 @@
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from "./components/Navbar";
+import About from "./about/page";
+import MyToDos from "./mytodos/page";
+import AuthDiagnostics from "./mytodos/page";
 //import Footer from "./components/Footer";
 
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/mytodos" element={<MyToDos />} />
+        <Route path="/authdiagnostics" element={<AuthDiagnostics />} />
+      </Routes>
+    </Router>
+  )
+}
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+function Home() {
   return (
         <div className="d-flex flex-column min-vh-100">
             {/* Navbar */}
@@ -21,7 +43,7 @@ function App() {
             </div>
             {/* Footer */}
         </div>
-  );
+  )
 }
 
 export default App;

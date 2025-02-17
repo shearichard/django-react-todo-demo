@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -6,7 +5,7 @@ import Footer from "../components/Footer";
 export const metadata = {
     title: 'Next/Django Demo - Auth',
 };
-export default function Home() {
+export default function AuthDiagnostics() {
     return (
         <div className="d-flex flex-column min-vh-100">
             {/* Navbar */}
@@ -19,8 +18,6 @@ export default function Home() {
                     </p>
                 </div>
             </div>
-            {/* Footer */}
-            <Footer />
         </div>
     );
 }

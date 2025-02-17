@@ -1,16 +1,15 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 // app/page.js
 export const metadata = {
     title: 'Next/Django Demo - Home',
 };
-export default function Home() {
+//export default function Home() {
+export default function About() {
     return (
         <div className="d-flex flex-column min-vh-100">
-	{/* Navbar */}
-	<Navbar />
+          {/* Navbar */}
+          <Navbar />
 
             {/* Main Content */}
             <div className="container mt-5 flex-grow-1">
@@ -24,8 +23,6 @@ export default function Home() {
                     </p>
                 </div>
             </div>
-            {/* Footer */}
-	    <Footer />
         </div>
     );
 }
