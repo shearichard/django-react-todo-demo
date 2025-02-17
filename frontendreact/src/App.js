@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <div className="jumbotron">
+                          <h1 className="display-4">Welcome to the Next/Django Demo App (c)</h1>
+                          <p className="lead">
+                              This is a 'todo' app to demonstrate how Next and Django can work together.
+                          </p>
+                          <p>
+                              See the project at <a href="https://github.com/shearichard/django-react-todo-demo">django-react-todo-demo</a>.
+                          </p>
+                      </div>
+
+      Placeholder text
     </div>
   );
 }
