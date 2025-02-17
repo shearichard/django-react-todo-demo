@@ -1,8 +1,10 @@
 # Using Next.js or React with Django
 
+## Motivation
+
 This project is intended for use in workshops etc to demonstrate an 'end-to-end' experience of using [React](https://react.dev/) and [Nextjs](https://nextjs.org/docs), on the front end (there is a choice of front ends), and [Django](https://www.djangoproject.com/) on the backend.
 
-# Using OAuth for Authentication
+## Using OAuth for Authentication
 
 This project is also intended as a demonstrator for the use of [OAuth](https://datatracker.ietf.org/wg/oauth/about/) as an Authentication mechanism, specifically in the context of a Django backend and a React frontend.
 
