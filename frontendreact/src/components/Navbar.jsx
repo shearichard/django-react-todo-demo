@@ -12,10 +12,10 @@ export default function Navbar() {
 		                            <a className="nav-link" href="/mytodos">My Todos</a>
 		                        </li>
 		                        <li className="nav-item me-3">
-		                            <a className="nav-link" href="/about">About</a>
+		                            <a className="nav-link" href="/authdiagnostics">Authentication</a>
 		                        </li>
 		                        <li className="nav-item me-3">
-		                            <a className="nav-link" href="/authdiagnostics">Authentication</a>
+		                            <a className="nav-link" href="/about">About</a>
 		                        </li>
 		                    </ul>
 		                </div>
