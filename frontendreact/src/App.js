@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
        <div className="jumbotron">
-                          <h1 className="display-4">Welcome to the Next/Django Demo App (c)</h1>
+                          <h1 className="display-4">Welcome to the Next/Django Demo App (d)</h1>
                           <p className="lead">
                               This is a 'todo' app to demonstrate how Next and Django can work together.
                           </p>

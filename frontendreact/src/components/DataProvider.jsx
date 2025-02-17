@@ -1,4 +1,3 @@
-"use client";
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
@@ -10,6 +9,7 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   // Fetch all to-do items
+  /*
   const fetchTodos_HIDE = async () => {
     //debugger
     try {
@@ -19,6 +19,7 @@ export const DataProvider = ({ children }) => {
       console.error('Error fetching todos:', error);
     }
   };
+  */
   const fetchTodos = async () => {
     const response = await apiClient.get('/todo/api/v1/todos/');
     setData(response.data);

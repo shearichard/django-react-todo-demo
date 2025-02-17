@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useContext, useEffect, useState, useRef } from 'react';
 //
 import { DeleteIconAndConfirmation } from "./DeleteIconAndConfirmation";

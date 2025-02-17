@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useContext, useEffect, useState, useRef } from 'react';
 
 import { DataContext } from '../components/DataProvider';
