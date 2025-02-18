@@ -2,6 +2,7 @@
 from django.shortcuts import render  # noqa : F401
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth.decorators import login_required
 #
 from rest_framework import viewsets
 #
@@ -19,8 +20,8 @@ def index(request):
     return render(request, "todo/index.html", {"foo": bar})
 
 
+@login_required
 def todolist(request):
-    #bar = {"bar": "Todo List"}
+    # https://docs.djangoproject.com/en/5.1/topics/auth/default/#module-django.contrib.auth.views
     qs_todo = Todo.objects.order_by("title")
-    print(qs_todo)
     return render(request, "todo/indexinner.html", {"todos": qs_todo})
