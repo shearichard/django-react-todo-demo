@@ -64,13 +64,16 @@ SITE_ID = 1
 
 
 #
+# TEMPORARILY (AT LEAST) TURN HEADLESS_ONLY OFF TO ALLOW FOR
+# 'PLAIN OLD DJANGO' USAGE
+#
 # Configure allauth so that it is suitable only for SPA/Mobile
 # apps and so that views which are used only by conventional
 # projects are suppressed. 
 #
 # More details here https://docs.allauth.org/en/latest/headless/introduction.html
 #
-HEADLESS_ONLY = True
+#HEADLESS_ONLY = False
 
 # HEADLESS_FRONTEND_URLS define where email confirmation and password reset mails 
 # should link to if you do not wish them to be link to the allauth.account views
