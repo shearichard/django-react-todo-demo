@@ -9,4 +9,7 @@
 	{{ block.super }}
 	<h2>Index H2 Header V1</h2>
 	<p>This is indexinner - {{ foo.bar }}</p>
+    {% for todo in todos %}
+        <p>{{todo.title}}</p>
+    {% endfor %}
 {% endblock content %}

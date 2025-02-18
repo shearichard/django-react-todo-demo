@@ -20,5 +20,7 @@ def index(request):
 
 
 def todolist(request):
-    bar = {"bar": "Todo List"}
-    return render(request, "todo/indexinner.html", {"foo": bar})
+    #bar = {"bar": "Todo List"}
+    qs_todo = Todo.objects.order_by("title")
+    print(qs_todo)
+    return render(request, "todo/indexinner.html", {"todos": qs_todo})
