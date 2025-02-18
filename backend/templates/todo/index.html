@@ -7,6 +7,15 @@
 {% endblock stylesheets %}
 {% block content %}
 	{{ block.super }}
-	<h2>Index H2 Header V1</h2>
-	<p>{{ foo.bar }}</p>
+	<div className="container mt-5 flex-grow-1">
+		<div className="jumbotron">
+			<h1 className="display-4">OAuth for React/Django</h1>
+			<p className="lead">
+				This is a 'todo' app to demonstrate the use of OAuth in a React/Django app. 
+			</p>
+			<p>
+				The repos for the project is here : <a href="https://github.com/shearichard/django-react-todo-demo">django-react-todo-demo</a>.
+			</p>
+		</div>
+	</div>
 {% endblock content %}
