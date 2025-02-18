@@ -3,16 +3,48 @@
 <html>
 <head>
 	<title>
-		{% block title %}Two Scoops of Django{% endblock title %}
+		{% block title %}OAuth/Django Demo{% endblock title %}
 	</title>
 	{% block stylesheets %}
 		<link rel="stylesheet" type="text/css" href="{% static 'css/project.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lumen/bootstrap.min.css">
 	{% endblock stylesheets %}
 </head>
 <body>
 	<div class="content">
 		{% block content %}
-		<h1>Base Header</h1>
+        <div class="d-flex flex-column min-vh-100">
+            <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+                <div class="container">
+                    <a class="navbar-brand" href="/">Next/Django Demo</a>
+                    <ul class="navbar-nav ms-auto d-flex flex-row">
+                        <li class="nav-item me-3">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item me-3">
+                            <a class="nav-link" href="/mytodos">My Todos</a>
+                        </li>
+                        <li class="nav-item me-3">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item me-3">
+                            <a class="nav-link" href="/authdiagnostics">Authentication</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container mt-5 flex-grow-1">
+                <div class="jumbotron">
+                    <h1 class="display-4">Welcome to the Next/Django Demo App</h1>
+                    <p class="lead">
+                        This is a 'todo' app to demonstrate how Next and Django can work together. 
+                    </p>
+                    <p>
+                        See the project at <a href="https://github.com/shearichard/django-react-todo-demo">django-react-todo-demo</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
 		{% endblock content %}
 	</div>
 </body>
