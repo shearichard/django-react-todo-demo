@@ -21,7 +21,7 @@
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link" href="/mytodos">My Todos</a>
+                            <a class="nav-link" href="/todo/mytodos">My Todos</a>
                         </li>
                         <li class="nav-item me-3">
                             <a class="nav-link" href="/about">About</a>
@@ -29,6 +29,15 @@
                         <li class="nav-item me-3">
                             <a class="nav-link" href="/authdiagnostics">Authentication</a>
                         </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item me-3">
+                                <a class="nav-link" href="/accounts/logout/?next=/todo/">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item me-3">
+                                <a class="nav-link" href="/accounts/login/?next=/todo/mytodos">Login</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>
