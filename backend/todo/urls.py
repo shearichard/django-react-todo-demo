@@ -11,6 +11,10 @@ VERSION_NUMBER = 1
 
 urlapi_patterns = [
     path(
+        "", 
+        views.index, 
+        name="todo_test_index"),
+    path(
         f"api/v{VERSION_NUMBER}/", 
         include(router.urls)),
     path(

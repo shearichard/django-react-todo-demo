@@ -137,10 +137,24 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "backend.urls"
 
+##########################
+#import os.path
+#PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+#...
+#MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media/')
+#TEMPLATE_DIRS = [
+#            os.path.join(BASE_DIR, 'templates/'),
+#            ]
+##########################
+
+
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            os.path.join(BASE_DIR, '../templates/'),
+            ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
