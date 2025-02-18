@@ -350,8 +350,14 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
+        "django.template": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
     },
 }
+
 # Settings related to dj_loguru STOP
 #load_loguru(globals(), logging_config=generate_logging_config(loglevel='INFO'))
 
