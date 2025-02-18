@@ -15,6 +15,10 @@ urlapi_patterns = [
         views.index, 
         name="todo_test_index"),
     path(
+        "mytodos/", 
+        views.todolist, 
+        name="todo_list_index"),
+    path(
         f"api/v{VERSION_NUMBER}/", 
         include(router.urls)),
     path(

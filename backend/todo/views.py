@@ -17,3 +17,8 @@ class TodoView(viewsets.ModelViewSet):
 def index(request):
     bar = {"bar": "Placeholder value"}
     return render(request, "todo/index.html", {"foo": bar})
+
+
+def todolist(request):
+    bar = {"bar": "Todo List"}
+    return render(request, "todo/indexinner.html", {"foo": bar})

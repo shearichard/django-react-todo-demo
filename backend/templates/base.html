@@ -12,7 +12,6 @@
 </head>
 <body>
 	<div class="content">
-		{% block content %}
         <div class="d-flex flex-column min-vh-100">
             <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
                 <div class="container">
@@ -34,18 +33,10 @@
                 </div>
             </nav>
             <div class="container mt-5 flex-grow-1">
-                <div class="jumbotron">
-                    <h1 class="display-4">Welcome to the Next/Django Demo App</h1>
-                    <p class="lead">
-                        This is a 'todo' app to demonstrate how Next and Django can work together. 
-                    </p>
-                    <p>
-                        See the project at <a href="https://github.com/shearichard/django-react-todo-demo">django-react-todo-demo</a>.
-                    </p>
-                </div>
+                {% block content %}
+                {% endblock content %}
             </div>
         </div>
-		{% endblock content %}
 	</div>
 </body>
 </html>

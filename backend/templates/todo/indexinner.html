@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Todo Index{% endblock title %}
+{% block stylesheets %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+{% endblock stylesheets %}
+{% block content %}
+	{{ block.super }}
+	<h2>Index H2 Header V1</h2>
+	<p>This is indexinner - {{ foo.bar }}</p>
+{% endblock content %}
