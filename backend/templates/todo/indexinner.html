@@ -7,9 +7,76 @@
 {% endblock stylesheets %}
 {% block content %}
 	{{ block.super }}
-	<h2>Index H2 Header V1</h2>
-	<p>This is indexinner - {{ foo.bar }}</p>
-    {% for todo in todos %}
-        <p>{{todo.title}}</p>
-    {% endfor %}
+    <div class="container mt-5 flex-grow-1">
+        <h2>Todos</h2>
+        <hr />
+        <table class="table table-responsive table-striped">
+          <thead>
+            <tr>
+              <th scope="col">
+                <!--
+                <AddIconAndForm
+                  addTodo={addTodo} 
+                />
+                -->
+                &nbsp;
+              </th>
+              <th scope="col"></th>
+              <th scope="col">Task</th>
+              <th scope="col">Completed ?</th>
+              <th scope="col">Complete By</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for todo in todos %}
+            <tr key={{todo.id}} data-testid=row-{{todo.id}}>
+                <td>
+                <!--
+                  <UpdateIconAndForm
+                    updateTodo={updateTodo} 
+                    logtestfunction={logtestfunction} 
+                    todoid={item.id} 
+                    fetchTodo={fetchTodo}
+                  />
+                -->
+                &nbsp;
+                </td>
+                <td>
+                <!--
+                  <DeleteIconAndConfirmation 
+                    handleDeleteTodo={handleDeleteTodo} 
+                    logtestfunction={logtestfunction} 
+                    todoid={item.id} 
+                    fetchTodo={fetchTodo}
+                  />
+                -->
+                &nbsp;
+                </td>
+                <td>
+                    {{todo.title}}
+                </td>
+                <td>
+                <!--
+                  <ToggleCompletedIconAndConfirmation 
+                    handleToggleCompletion={handleToggleCompletion} 
+                    logtestfunction={logtestfunction} 
+                    todoid={item.id} 
+                    isCompleted={item.is_completed} 
+                  />
+                  />
+                -->
+                    {% if todo.is_completed  %}
+                        <span>Yes</span>
+                    {% else %}
+                        <span>No</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {{todo.should_be_completed_by_date}}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
 {% endblock content %}
