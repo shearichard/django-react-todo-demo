@@ -56,6 +56,8 @@ EMAIL_FILE_PATH = Path(BASE_DIR, '..','email_produced_in_development')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+INTERNAL_IPS = ["127.0.0.1",]
+
 ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
 #
 # django-allauth config
@@ -117,6 +119,7 @@ BASE_INSTALLED_APPS = [
 #'allauth.socialaccount.providers.google',
 DEV_ONLY_INSTALLED_APPS = [
     'django_extensions',
+	'debug_toolbar',
 ]
 #
 if RUNNING_DEVSERVER:
@@ -125,6 +128,7 @@ else:
     INSTALLED_APPS = BASE_INSTALLED_APPS
 #
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django_guid.middleware.guid_middleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
